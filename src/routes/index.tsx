@@ -14,17 +14,17 @@ import { Faq } from "../components/sections/Faq";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Green Earth Mission | Save Trees, Plant Nature, Protect Life" },
+      { title: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
       {
         name: "description",
         content:
-          "Join India's citizen-led movement to save trees, relocate mature ones, plant native species, and protect the environment. Donate or volunteer today.",
+          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
       },
-      { property: "og:title", content: "Green Earth Mission — A movement for Mother Nature" },
+      { property: "og:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
       {
         property: "og:description",
         content:
-          "Rescue, relocate and plant trees with a citizen-led movement across India. Donate, volunteer, protect the future.",
+          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
       },
       { property: "og:url", content: "/" },
     ],

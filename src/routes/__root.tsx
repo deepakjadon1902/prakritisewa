@@ -100,11 +100,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Green Earth Mission | Save Trees, Plant Nature, Protect Life" },
+      { title: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
       {
         name: "description",
         content:
-          "A citizen movement to rescue, relocate and plant trees across India. Donate, volunteer, and help rebuild our green canopy.",
+          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
       },
       { name: "author", content: "Green Earth Mission" },
       { name: "theme-color", content: "#2e5e3a" },
@@ -112,10 +112,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@greenearth" },
+      { property: "og:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
+      { name: "twitter:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
+      { property: "og:description", content: "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से" },
+      { name: "twitter:description", content: "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a1ff1923-0265-4844-9cd7-fb32ea72d75f/id-preview-178f5b59--44b1db3f-9949-470d-af09-7d70431bdd31.lovable.app-1783840324378.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a1ff1923-0265-4844-9cd7-fb32ea72d75f/id-preview-178f5b59--44b1db3f-9949-470d-af09-7d70431bdd31.lovable.app-1783840324378.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

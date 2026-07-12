@@ -1,24 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "../components/sections/Hero";
+import { MissionOverview } from "../components/sections/MissionOverview";
+import { ImpactCounter } from "../components/sections/ImpactCounter";
+import { OurWork } from "../components/sections/OurWork";
+import { WhyTrees } from "../components/sections/WhyTrees";
+import { Process } from "../components/sections/Process";
+import { GalleryPreview } from "../components/sections/GalleryPreview";
+import { Testimonials } from "../components/sections/Testimonials";
+import { DonateCta, VolunteerCta } from "../components/sections/CtaBanners";
+import { BlogPreview } from "../components/sections/BlogPreview";
+import { Faq } from "../components/sections/Faq";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Green Earth Mission | Save Trees, Plant Nature, Protect Life" },
+      {
+        name: "description",
+        content:
+          "Join India's citizen-led movement to save trees, relocate mature ones, plant native species, and protect the environment. Donate or volunteer today.",
+      },
+      { property: "og:title", content: "Green Earth Mission — A movement for Mother Nature" },
+      {
+        property: "og:description",
+        content:
+          "Rescue, relocate and plant trees with a citizen-led movement across India. Donate, volunteer, protect the future.",
+      },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <MissionOverview />
+      <ImpactCounter />
+      <OurWork />
+      <WhyTrees />
+      <Process />
+      <GalleryPreview />
+      <Testimonials />
+      <DonateCta />
+      <VolunteerCta />
+      <BlogPreview />
+      <Faq limit={5} />
+    </>
   );
 }

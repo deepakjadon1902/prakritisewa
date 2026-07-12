@@ -8,13 +8,13 @@ import { DonateCta } from "../components/sections/CtaBanners";
 export const Route = createFileRoute("/mission")({
   head: () => ({
     meta: [
-      { title: "Our Mission | Green Earth Mission" },
+      { title: "Our Mission | Prakriti Sewa" },
       {
         name: "description",
         content:
           "We rescue endangered trees, relocate mature ones, plant native species with communities, and rebuild the canopy of Indian cities.",
       },
-      { property: "og:title", content: "Our Mission — Green Earth Mission" },
+      { property: "og:title", content: "Our Mission — Prakriti Sewa" },
       { property: "og:url", content: "/mission" },
     ],
     links: [{ rel: "canonical", href: "/mission" }],

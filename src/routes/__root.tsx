@@ -10,10 +10,17 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../context/language";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
+import { InstallPrompt } from "../components/common/InstallPrompt";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  absoluteUrl,
+  defaultOgImage,
+} from "../constants/site";
 
 function NotFoundComponent() {
   return (
@@ -22,7 +29,7 @@ function NotFoundComponent() {
         <p className="font-display text-[8rem] leading-none text-gradient-forest">404</p>
         <h1 className="mt-2 font-display text-2xl font-semibold">This trail ends here.</h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          The page you're looking for has been moved or never existed. Head back to the forest.
+          The page you are looking for has been moved or never existed. Head back to the mission.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link
@@ -46,14 +53,11 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-2xl font-semibold">This page didn't load</h1>
+        <h1 className="font-display text-2xl font-semibold">This page did not load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
@@ -82,11 +86,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 const ORG_JSONLD = {
   "@context": "https://schema.org",
   "@type": "NGO",
-  name: "Green Earth Mission",
-  url: "/",
-  logo: "/favicon.ico",
+  name: SITE_NAME,
+  alternateName: "प्रकृति सेवा",
+  url: absoluteUrl("/"),
+  logo: absoluteUrl("/favicon.svg"),
   description:
-    "A citizen-led movement to rescue endangered trees, relocate mature ones, plant native species, and rebuild the canopy of Indian cities.",
+    "A selfless social movement to save endangered trees, protect existing trees, relocate unhealthy trees, plant native species, and preserve Mother Nature.",
   sameAs: [
     "https://instagram.com/",
     "https://facebook.com/",
@@ -100,27 +105,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
-      {
-        name: "description",
-        content:
-          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
-      },
-      { name: "author", content: "Green Earth Mission" },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      { name: "robots", content: "index, follow" },
+      { name: "author", content: SITE_NAME },
       { name: "theme-color", content: "#2e5e3a" },
-      { property: "og:site_name", content: "Green Earth Mission" },
+      { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:url", content: absoluteUrl("/") },
+      { property: "og:image", content: defaultOgImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@greenearth" },
-      { property: "og:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
-      { name: "twitter:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
-      { property: "og:description", content: "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से" },
-      { name: "twitter:description", content: "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a1ff1923-0265-4844-9cd7-fb32ea72d75f/id-preview-178f5b59--44b1db3f-9949-470d-af09-7d70431bdd31.lovable.app-1783840324378.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a1ff1923-0265-4844-9cd7-fb32ea72d75f/id-preview-178f5b59--44b1db3f-9949-470d-af09-7d70431bdd31.lovable.app-1783840324378.png" },
+      { name: "twitter:site", content: "@prakritisewa" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: defaultOgImage },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: absoluteUrl("/") },
+      { rel: "manifest", href: "/manifest.json" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -158,6 +165,14 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch((error) => {
+        console.error("Service worker registration failed", error);
+      });
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
@@ -172,6 +187,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <InstallPrompt />
       </LanguageProvider>
     </QueryClientProvider>
   );

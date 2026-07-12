@@ -6,18 +6,42 @@ import { SectionHeader } from "../components/ui/SectionHeader";
 import { motion } from "motion/react";
 
 const timeline = [
-  { year: "2014", title: "The first sapling", desc: "A small group of friends plants 50 saplings in a single Sunday drive in Pune." },
-  { year: "2017", title: "First relocation", desc: "We save an 80-year-old peepal from a widening road. It thrives to this day." },
-  { year: "2019", title: "10 cities", desc: "Chapters launch across 10 Indian cities. First arborist team hired." },
-  { year: "2022", title: "1 million trees planted", desc: "A milestone made possible by 12,000+ volunteers across the country." },
-  { year: "2025", title: "146 cities", desc: "Operations in every major Indian metro plus dozens of Tier-2 and Tier-3 cities." },
+  {
+    year: "2014",
+    title: "The first sapling",
+    desc: "A small group of friends plants 50 saplings in a single Sunday drive in Pune.",
+  },
+  {
+    year: "2017",
+    title: "First relocation",
+    desc: "We save an 80-year-old peepal from a widening road. It thrives to this day.",
+  },
+  {
+    year: "2019",
+    title: "10 cities",
+    desc: "Chapters launch across 10 Indian cities. First arborist team hired.",
+  },
+  {
+    year: "2022",
+    title: "1 million trees planted",
+    desc: "A milestone made possible by 12,000+ volunteers across the country.",
+  },
+  {
+    year: "2025",
+    title: "146 cities",
+    desc: "Operations in every major Indian metro plus dozens of Tier-2 and Tier-3 cities.",
+  },
 ];
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
-      { title: "Our Impact | Trees Saved, Planted, Relocated | Green Earth Mission" },
-      { name: "description", content: "1.2M+ trees planted, 38K+ relocated, 24K+ volunteers, 146 cities. See the timeline of our impact — and where it's going next." },
+      { title: "Our Impact | Trees Saved, Planted, Relocated | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "1.2M+ trees planted, 38K+ relocated, 24K+ volunteers, 146 cities. See the timeline of our impact — and where it's going next.",
+      },
       { property: "og:url", content: "/impact" },
     ],
     links: [{ rel: "canonical", href: "/impact" }],

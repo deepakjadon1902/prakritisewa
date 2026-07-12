@@ -9,10 +9,9 @@ export function Hero() {
   const { t } = useLanguage();
   return (
     <section className="relative isolate overflow-hidden">
-      {/* LCP image */}
       <img
         src={heroImage}
-        alt="An ancient banyan tree in a misty Indian forest at golden hour"
+        alt="घने पेड़ की छांव में प्रकृति का शांत दृश्य"
         width={1920}
         height={1280}
         fetchPriority="high"
@@ -74,7 +73,10 @@ export function Hero() {
             className="group inline-flex items-center gap-1.5 rounded-full px-4 py-3 text-sm font-semibold text-white/90 transition-colors hover:text-white"
           >
             {t("cta_explore")}
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowRight
+              className="size-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </motion.div>
 
@@ -85,9 +87,9 @@ export function Hero() {
           className="mt-12 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/15 pt-6 text-white/85"
         >
           {[
-            { n: "1.2M+", l: "Trees planted" },
-            { n: "38,000", l: "Trees relocated" },
-            { n: "24,000+", l: "Volunteers" },
+            { n: "1.2M+", l: "लगाए गए पेड़" },
+            { n: "38,000", l: "स्थानांतरित पेड़" },
+            { n: "24,000+", l: "स्वयंसेवक" },
           ].map((s) => (
             <div key={s.l}>
               <p className="font-display text-2xl font-semibold sm:text-3xl">{s.n}</p>

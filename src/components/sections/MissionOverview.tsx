@@ -12,7 +12,7 @@ export function MissionOverview() {
           <div>
             <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
               <span className="size-1.5 rounded-full bg-[color:var(--leaf)]" />
-              Who we are
+              हम कौन हैं
             </p>
             <motion.h2
               initial={{ opacity: 0, y: 12 }}
@@ -21,31 +21,32 @@ export function MissionOverview() {
               transition={{ duration: 0.6 }}
               className="text-balance font-display text-3xl font-semibold leading-tight sm:text-5xl"
             >
-              We're the quiet infrastructure between{" "}
-              <span className="text-gradient-forest">people and the trees</span> they love.
+              हम लोगों और उनके प्रिय पेड़ों के बीच{" "}
+              <span className="text-gradient-forest">सेवा का पुल</span> बनाते हैं।
             </motion.h2>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Green Earth Mission is a citizen-led movement that rescues endangered trees,
-              relocates mature ones, plants native species with communities, and rebuilds the
-              relationship between cities and their canopy.
+              प्रकृति सेवा एक निःस्वार्थ सामाजिक पहल है। हम संकट में आए पेड़ों की सूचना लेते हैं,
+              स्थान देखते हैं, वैज्ञानिक तरीके से निरीक्षण करते हैं, संभव हो तो पेड़ को वहीं बचाते
+              हैं और जरूरत पड़ने पर सुरक्षित पुनर्स्थापन में मदद करते हैं।
             </p>
             <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-              We are not a company. We are volunteers, arborists, students, doctors, teachers,
-              engineers — anyone who has ever stood under a tree and felt lucky.
+              हमारा उद्देश्य केवल पौधे लगाना नहीं है। हमारा उद्देश्य पेड़ को जीवित रखना, समाज को
+              जिम्मेदार बनाना और हर बच्चे को ऐसी धरती देना है जहां छांव, पक्षी और स्वच्छ हवा सामान्य
+              बात हों।
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/mission"
                 className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
               >
-                Read our mission
+                मिशन पढ़ें
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
                 to="/impact"
                 className="inline-flex items-center rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold hover:bg-accent"
               >
-                See the numbers
+                प्रभाव देखें
               </Link>
             </div>
           </div>
@@ -60,7 +61,7 @@ export function MissionOverview() {
             <div className="overflow-hidden rounded-[2rem] shadow-lift">
               <img
                 src={forestImg}
-                alt="Aerial view of a dense Indian forest with a winding river"
+                alt="घने भारतीय जंगल का हवाई दृश्य"
                 width={1600}
                 height={900}
                 loading="lazy"
@@ -68,12 +69,12 @@ export function MissionOverview() {
                 className="size-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-4 max-w-[240px] rounded-2xl bg-card p-5 shadow-lift ring-1 ring-border sm:-left-6">
+            <div className="absolute -bottom-6 -left-4 max-w-[260px] rounded-2xl bg-card p-5 shadow-lift ring-1 ring-border sm:-left-6">
               <p className="font-display text-2xl font-semibold text-[color:var(--forest)]">
-                Since 2014
+                सेवा, स्वार्थ नहीं
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Volunteer-run, science-guided, community-owned.
+                स्वयंसेवक-चालित, विज्ञान-समर्थित, समुदाय-केंद्रित।
               </p>
             </div>
           </motion.div>

@@ -16,8 +16,12 @@ const schema = z.object({
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Green Earth Mission" },
-      { name: "description", content: "Report an endangered tree, ask a question, or partner with us. We reply within two working days." },
+      { title: "Contact Us | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "Report an endangered tree, ask a question, or partner with us. We reply within two working days.",
+      },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -61,11 +65,7 @@ function ContactPage() {
                 title="Address"
                 value="12 Green Lane, Sector 5, Pune 411001, India"
               />
-              <InfoCard
-                icon={Clock}
-                title="Hours"
-                value="Mon–Sat · 9:30 AM – 6:30 PM IST"
-              />
+              <InfoCard icon={Clock} title="Hours" value="Mon–Sat · 9:30 AM – 6:30 PM IST" />
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ function ContactPage() {
               >
                 <div className="aspect-[16/10] w-full bg-secondary">
                   <iframe
-                    title="Green Earth Mission location"
+                    title="Prakriti Sewa location"
                     src="https://www.openstreetmap.org/export/embed.html?bbox=73.83%2C18.51%2C73.87%2C18.55&layer=mapnik"
                     className="size-full border-0"
                     loading="lazy"
@@ -86,7 +86,10 @@ function ContactPage() {
             <div className="rounded-[2rem] border border-border bg-card p-6 shadow-lift sm:p-10">
               {ok ? (
                 <div className="py-16 text-center">
-                  <CheckCircle2 className="mx-auto size-12 text-[color:var(--leaf)]" aria-hidden="true" />
+                  <CheckCircle2
+                    className="mx-auto size-12 text-[color:var(--leaf)]"
+                    aria-hidden="true"
+                  />
                   <h2 className="mt-4 font-display text-2xl font-semibold">Message received.</h2>
                   <p className="mt-2 text-muted-foreground">We'll get back to you shortly.</p>
                   <button
@@ -100,7 +103,13 @@ function ContactPage() {
               ) : (
                 <form onSubmit={onSubmit} noValidate className="grid gap-5">
                   <TextField name="name" label="Name" error={errors.name} required />
-                  <TextField name="email" type="email" label="Email" error={errors.email} required />
+                  <TextField
+                    name="email"
+                    type="email"
+                    label="Email"
+                    error={errors.email}
+                    required
+                  />
                   <TextField name="subject" label="Subject" error={errors.subject} required />
                   <div>
                     <label htmlFor="message" className="mb-1.5 block text-sm font-semibold">

@@ -1,25 +1,30 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Clock } from "lucide-react";
+import { Clock, ExternalLink } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
+import { absoluteUrl } from "../constants/site";
 import { posts } from "../data/blog";
 
 export const Route = createFileRoute("/blogs")({
   head: () => ({
     meta: [
-      { title: "Blog | Green Earth Mission" },
-      { name: "description", content: "Field notes, science, and stories on tree conservation, urban forestry, and environmental awareness in India." },
-      { property: "og:url", content: "/blogs" },
+      { title: "ब्लॉग | पेड़, प्रकृति और वास्तविक प्रेरक कहानियां | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "प्रकृति सेवा ब्लॉग में पेड़ संरक्षण, वृक्षारोपण, पर्यावरण जागरूकता और भारत की वास्तविक हरित कहानियां पढ़ें।",
+      },
+      { property: "og:url", content: absoluteUrl("/blogs") },
     ],
-    links: [{ rel: "canonical", href: "/blogs" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/blogs") }],
   }),
   component: () => (
     <>
       <PageHero
-        eyebrow="Blog"
-        title={<>Field notes from the canopy.</>}
-        sub="Science, storytelling, and honest reflections from twelve years of protecting trees."
+        eyebrow="ब्लॉग"
+        title={<>भारत की सच्ची हरित कहानियां।</>}
+        sub="यहां लिखी हर कहानी सार्वजनिक स्रोतों से प्रेरित, संक्षेपित और स्रोत-लिंक के साथ प्रस्तुत है।"
       />
       <section className="py-16 sm:py-24">
         <Container>
@@ -39,11 +44,12 @@ export const Route = createFileRoute("/blogs")({
                     alt={p.title}
                     loading="lazy"
                     decoding="async"
+                    referrerPolicy="no-referrer"
                     className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                     <span className="rounded-full bg-secondary px-2.5 py-1 font-medium text-[color:var(--forest)]">
                       {p.category}
                     </span>
@@ -55,7 +61,25 @@ export const Route = createFileRoute("/blogs")({
                   </div>
                   <h2 className="mt-4 text-lg font-semibold leading-snug">{p.title}</h2>
                   <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
-                  <p className="mt-4 text-xs text-muted-foreground">By {p.author}</p>
+                  <p className="mt-4 text-xs text-muted-foreground">लेख: {p.author}</p>
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <Link
+                      to="/blogs/$slug"
+                      params={{ slug: p.slug }}
+                      className="inline-flex text-sm font-semibold text-[color:var(--forest)]"
+                    >
+                      पूरा पढ़ें →
+                    </Link>
+                    <a
+                      href={p.sources[0]?.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground"
+                    >
+                      स्रोत
+                      <ExternalLink className="size-3" aria-hidden="true" />
+                    </a>
+                  </div>
                 </div>
               </motion.article>
             ))}

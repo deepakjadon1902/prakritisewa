@@ -21,10 +21,12 @@ import { Route as MissionRouteImport } from './routes/mission'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DonationConfirmationRouteImport } from './routes/donation-confirmation'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
@@ -86,6 +88,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonationConfirmationRoute = DonationConfirmationRouteImport.update({
+  id: '/donation-confirmation',
+  path: '/donation-confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
@@ -106,12 +113,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogsSlugRoute = BlogsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blogs': typeof BlogsRoute
+  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/donation-confirmation': typeof DonationConfirmationRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -124,12 +137,14 @@ export interface FileRoutesByFullPath {
   '/tree-protection': typeof TreeProtectionRoute
   '/tree-relocation': typeof TreeRelocationRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blogs': typeof BlogsRoute
+  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/donation-confirmation': typeof DonationConfirmationRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -142,13 +157,15 @@ export interface FileRoutesByTo {
   '/tree-protection': typeof TreeProtectionRoute
   '/tree-relocation': typeof TreeRelocationRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blogs': typeof BlogsRoute
+  '/blogs': typeof BlogsRouteWithChildren
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
+  '/donation-confirmation': typeof DonationConfirmationRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
@@ -161,6 +178,7 @@ export interface FileRoutesById {
   '/tree-protection': typeof TreeProtectionRoute
   '/tree-relocation': typeof TreeRelocationRoute
   '/volunteer': typeof VolunteerRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -169,6 +187,7 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/donate'
+    | '/donation-confirmation'
     | '/faq'
     | '/gallery'
     | '/impact'
@@ -181,12 +200,14 @@ export interface FileRouteTypes {
     | '/tree-protection'
     | '/tree-relocation'
     | '/volunteer'
+    | '/blogs/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/blogs'
     | '/contact'
     | '/donate'
+    | '/donation-confirmation'
     | '/faq'
     | '/gallery'
     | '/impact'
@@ -199,12 +220,14 @@ export interface FileRouteTypes {
     | '/tree-protection'
     | '/tree-relocation'
     | '/volunteer'
+    | '/blogs/$slug'
   id:
     | '__root__'
     | '/'
     | '/blogs'
     | '/contact'
     | '/donate'
+    | '/donation-confirmation'
     | '/faq'
     | '/gallery'
     | '/impact'
@@ -217,13 +240,15 @@ export interface FileRouteTypes {
     | '/tree-protection'
     | '/tree-relocation'
     | '/volunteer'
+    | '/blogs/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogsRoute: typeof BlogsRoute
+  BlogsRoute: typeof BlogsRouteWithChildren
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
+  DonationConfirmationRoute: typeof DonationConfirmationRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
@@ -324,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donation-confirmation': {
+      id: '/donation-confirmation'
+      path: '/donation-confirmation'
+      fullPath: '/donation-confirmation'
+      preLoaderRoute: typeof DonationConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donate': {
       id: '/donate'
       path: '/donate'
@@ -352,14 +384,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blogs/$slug': {
+      id: '/blogs/$slug'
+      path: '/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof BlogsSlugRouteImport
+      parentRoute: typeof BlogsRoute
+    }
   }
 }
 
+interface BlogsRouteChildren {
+  BlogsSlugRoute: typeof BlogsSlugRoute
+}
+
+const BlogsRouteChildren: BlogsRouteChildren = {
+  BlogsSlugRoute: BlogsSlugRoute,
+}
+
+const BlogsRouteWithChildren = BlogsRoute._addFileChildren(BlogsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogsRoute: BlogsRoute,
+  BlogsRoute: BlogsRouteWithChildren,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
+  DonationConfirmationRoute: DonationConfirmationRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
@@ -376,3 +426,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

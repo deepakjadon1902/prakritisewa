@@ -19,8 +19,12 @@ const schema = z.object({
 export const Route = createFileRoute("/volunteer")({
   head: () => ({
     meta: [
-      { title: "Become a Volunteer | Green Earth Mission" },
-      { name: "description", content: "Join a chapter near you. Plantation drives, awareness walks, tree audits, weekend caretaking — pick what fits your life." },
+      { title: "Become a Volunteer | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "Join a chapter near you. Plantation drives, awareness walks, tree audits, weekend caretaking — pick what fits your life.",
+      },
       { property: "og:url", content: "/volunteer" },
     ],
     links: [{ rel: "canonical", href: "/volunteer" }],
@@ -58,11 +62,14 @@ function VolunteerPage() {
         <Container size="sm">
           {submitted ? (
             <div className="rounded-3xl border border-border bg-card p-10 text-center shadow-soft">
-              <CheckCircle2 className="mx-auto size-12 text-[color:var(--leaf)]" aria-hidden="true" />
+              <CheckCircle2
+                className="mx-auto size-12 text-[color:var(--leaf)]"
+                aria-hidden="true"
+              />
               <h2 className="mt-4 font-display text-2xl font-semibold">Welcome to the movement.</h2>
               <p className="mt-2 text-muted-foreground">
-                Your local chapter lead will reach out within 2 working days. Meanwhile, follow us on
-                social for the next drive near you.
+                Your local chapter lead will reach out within 2 working days. Meanwhile, follow us
+                on social for the next drive near you.
               </p>
               <button
                 type="button"
@@ -95,7 +102,9 @@ function VolunteerPage() {
                     defaultValue=""
                     className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
                   >
-                    <option value="" disabled>Select an option</option>
+                    <option value="" disabled>
+                      Select an option
+                    </option>
                     <option value="weekends">Weekends</option>
                     <option value="weekdays">Weekdays</option>
                     <option value="anytime">Anytime</option>

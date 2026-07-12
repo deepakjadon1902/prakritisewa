@@ -5,12 +5,36 @@ import { SectionHeader } from "../ui/SectionHeader";
 import saplingImg from "../../assets/sapling-hands.jpg";
 
 const benefits = [
-  { icon: Wind, title: "Oxygen for life", desc: "One mature tree produces enough oxygen for two people every single day." },
-  { icon: Thermometer, title: "Cooler cities", desc: "A tree-lined street can be 4–8°C cooler than one lined with concrete." },
-  { icon: CloudRain, title: "More rain, less flood", desc: "Forests draw moisture inland and slow storm runoff in cities." },
-  { icon: Bird, title: "Wildlife homes", desc: "A single old tree can shelter hundreds of species — most of them invisible to us." },
-  { icon: Leaf, title: "Cleaner air", desc: "Leaves capture PM2.5 and toxins that would otherwise reach our lungs." },
-  { icon: Baby, title: "For our children", desc: "The trees we plant today will outlive us — and comfort a generation we'll never meet." },
+  {
+    icon: Wind,
+    title: "Oxygen for life",
+    desc: "One mature tree produces enough oxygen for two people every single day.",
+  },
+  {
+    icon: Thermometer,
+    title: "Cooler cities",
+    desc: "A tree-lined street can be 4–8°C cooler than one lined with concrete.",
+  },
+  {
+    icon: CloudRain,
+    title: "More rain, less flood",
+    desc: "Forests draw moisture inland and slow storm runoff in cities.",
+  },
+  {
+    icon: Bird,
+    title: "Wildlife homes",
+    desc: "A single old tree can shelter hundreds of species — most of them invisible to us.",
+  },
+  {
+    icon: Leaf,
+    title: "Cleaner air",
+    desc: "Leaves capture PM2.5 and toxins that would otherwise reach our lungs.",
+  },
+  {
+    icon: Baby,
+    title: "For our children",
+    desc: "The trees we plant today will outlive us — and comfort a generation we'll never meet.",
+  },
 ];
 
 export function WhyTrees() {
@@ -36,7 +60,9 @@ export function WhyTrees() {
             />
             <div className="absolute bottom-6 left-6 right-6 rounded-2xl glass p-4 text-sm shadow-soft">
               <p className="font-semibold text-foreground">A single sapling</p>
-              <p className="text-muted-foreground">absorbs <b>21 kg of CO₂</b> a year once mature.</p>
+              <p className="text-muted-foreground">
+                absorbs <b>21 kg of CO₂</b> a year once mature.
+              </p>
             </div>
           </motion.div>
 

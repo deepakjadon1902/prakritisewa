@@ -7,17 +7,37 @@ import { SectionHeader } from "../components/ui/SectionHeader";
 import { DonateCta } from "../components/sections/CtaBanners";
 
 const pillars = [
-  { icon: TriangleAlert, title: "Rapid Response", desc: "48-hour visits to any tree flagged as at-risk in our operating cities." },
-  { icon: ShieldCheck, title: "Legal Advocacy", desc: "We help citizens challenge illegal felling and stop-work notices where needed." },
-  { icon: ClipboardCheck, title: "Health Audits", desc: "Free arborist audits for schools, campuses, and residential communities." },
-  { icon: PhoneCall, title: "24×7 Helpline", desc: "A citizen hotline that anyone can call to report an endangered tree." },
+  {
+    icon: TriangleAlert,
+    title: "Rapid Response",
+    desc: "48-hour visits to any tree flagged as at-risk in our operating cities.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Legal Advocacy",
+    desc: "We help citizens challenge illegal felling and stop-work notices where needed.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Health Audits",
+    desc: "Free arborist audits for schools, campuses, and residential communities.",
+  },
+  {
+    icon: PhoneCall,
+    title: "24×7 Helpline",
+    desc: "A citizen hotline that anyone can call to report an endangered tree.",
+  },
 ];
 
 export const Route = createFileRoute("/tree-protection")({
   head: () => ({
     meta: [
-      { title: "Tree Protection & Rescue | Green Earth Mission" },
-      { name: "description", content: "How we protect India's endangered trees — rapid response, legal advocacy, health audits, and a citizen helpline." },
+      { title: "Tree Protection & Rescue | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "How we protect India's endangered trees — rapid response, legal advocacy, health audits, and a citizen helpline.",
+      },
       { property: "og:url", content: "/tree-protection" },
     ],
     links: [{ rel: "canonical", href: "/tree-protection" }],

@@ -15,7 +15,7 @@ export function Footer() {
             <span className="grid size-9 place-items-center rounded-full bg-white/10">
               <Leaf className="size-5" aria-hidden="true" />
             </span>
-            Green Earth Mission
+            Prakriti Sewa
           </div>
           <p className="mt-4 max-w-sm text-sm text-white/70">{t("footer_tag")}</p>
           <div className="mt-6 flex gap-3">
@@ -63,14 +63,16 @@ export function Footer() {
             className="mt-5 flex gap-2"
             onSubmit={(e) => {
               e.preventDefault();
-              // Wire up when backend is enabled.
             }}
           >
             <label className="sr-only" htmlFor="footer-email">
               Email
             </label>
             <div className="relative flex-1">
-              <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/60" aria-hidden="true" />
+              <Mail
+                className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/60"
+                aria-hidden="true"
+              />
               <input
                 id="footer-email"
                 type="email"
@@ -92,7 +94,9 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <Container className="flex flex-col items-center justify-between gap-3 py-5 text-xs text-white/60 sm:flex-row">
-          <p>© {year} Green Earth Mission. {t("footer_rights")}</p>
+          <p>
+            © {year} Prakriti Sewa. {t("footer_rights")}
+          </p>
           <div className="flex gap-4">
             <Link to="/privacy" className="hover:text-white">
               Privacy
@@ -110,13 +114,7 @@ export function Footer() {
   );
 }
 
-function FooterCol({
-  title,
-  links,
-}: {
-  title: string;
-  links: { to: string; label: string }[];
-}) {
+function FooterCol({ title, links }: { title: string; links: { to: string; label: string }[] }) {
   return (
     <div>
       <h3 className="font-display text-lg font-semibold">{title}</h3>

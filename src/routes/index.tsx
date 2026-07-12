@@ -10,25 +10,18 @@ import { Testimonials } from "../components/sections/Testimonials";
 import { DonateCta, VolunteerCta } from "../components/sections/CtaBanners";
 import { BlogPreview } from "../components/sections/BlogPreview";
 import { Faq } from "../components/sections/Faq";
+import { SITE_DESCRIPTION, SITE_TITLE, absoluteUrl } from "../constants/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
-      {
-        name: "description",
-        content:
-          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
-      },
-      { property: "og:title", content: "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा" },
-      {
-        property: "og:description",
-        content:
-          "प्रकृति सेवा असुरक्षित और अस्वस्थ स्थानों से पेड़-पौधों को बचाकर सुरक्षित स्थानों पर पुनर्स्थापित करता है — बिना किसी स्वार्थ के, केवल प्रकृति की सेवा के भाव से",
-      },
-      { property: "og:url", content: "/" },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
   component: HomePage,
 });

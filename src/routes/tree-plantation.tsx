@@ -6,8 +6,12 @@ import { VolunteerCta } from "../components/sections/CtaBanners";
 export const Route = createFileRoute("/tree-plantation")({
   head: () => ({
     meta: [
-      { title: "Tree Plantation Drives | Green Earth Mission" },
-      { name: "description", content: "Native species, chosen for each region, planted with the community and monitored for years. Join a plantation drive near you." },
+      { title: "Tree Plantation Drives | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "Native species, chosen for each region, planted with the community and monitored for years. Join a plantation drive near you.",
+      },
       { property: "og:url", content: "/tree-plantation" },
     ],
     links: [{ rel: "canonical", href: "/tree-plantation" }],

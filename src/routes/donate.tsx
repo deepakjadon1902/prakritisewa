@@ -1,33 +1,39 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Heart, Landmark, Smartphone, ShieldCheck, Sparkles } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
+import { absoluteUrl } from "../constants/site";
 
 const amounts = [500, 1500, 5000, 15000];
 
 export const Route = createFileRoute("/donate")({
   head: () => ({
     meta: [
-      { title: "Donate to Save Trees | Green Earth Mission" },
-      { name: "description", content: "Fund tree rescues, relocations, native saplings, and long-term care. 80G tax-exempt. 100% transparent. Every rupee reaches the field." },
-      { property: "og:url", content: "/donate" },
+      { title: "Donate to Save Trees | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "Support Prakriti Sewa tree rescue, relocation, plantation, and transparent long-term tree care work across India.",
+      },
+      { property: "og:url", content: absoluteUrl("/donate") },
     ],
-    links: [{ rel: "canonical", href: "/donate" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/donate") }],
   }),
   component: DonatePage,
 });
 
 function DonatePage() {
   const [amount, setAmount] = useState<number>(1500);
+  const safeAmount = Math.max(100, Math.round(amount || 100));
 
   return (
     <>
       <PageHero
         eyebrow="Donate"
         title={<>Every rupee becomes a root.</>}
-        sub="₹500 saves an endangered tree. ₹5,000 plants a hundred saplings. 100% transparent. 80G tax-exempt."
+        sub="₹500 supports a rapid response visit. ₹5,000 can plant and protect a native sapling cluster. 100% transparent field-first giving."
       />
 
       <section className="py-16 sm:py-24">
@@ -73,19 +79,26 @@ function DonatePage() {
                 />
               </div>
               <p className="mt-6 rounded-2xl bg-secondary p-4 text-sm text-[color:var(--forest)]">
-                <b>Your ₹{amount.toLocaleString("en-IN")}</b> can{" "}
-                {amount >= 5000 ? "plant a mini-forest" : amount >= 1500 ? "care for a rescued tree for a year" : "fund one rapid-response visit"}.
+                <b>Your ₹{safeAmount.toLocaleString("en-IN")}</b> can{" "}
+                {safeAmount >= 5000
+                  ? "plant and protect a native sapling cluster"
+                  : safeAmount >= 1500
+                    ? "care for a rescued tree for a season"
+                    : "fund one rapid-response field visit"}
+                .
               </p>
 
-              <button
-                type="button"
+              <Link
+                to="/donation-confirmation"
+                search={{ amount: safeAmount }}
                 className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full gradient-sun px-6 py-3 text-base font-semibold text-foreground shadow-lift transition-transform hover:-translate-y-0.5"
               >
                 <Heart className="size-5" aria-hidden="true" />
-                Donate ₹{amount.toLocaleString("en-IN")}
-              </button>
+                Continue with ₹{safeAmount.toLocaleString("en-IN")}
+              </Link>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                Secure payments processed by our partner gateway. Receipt within minutes.
+                Online payment gateway placeholder. UPI and bank details are available for direct
+                support.
               </p>
             </motion.div>
 
@@ -96,7 +109,7 @@ function DonatePage() {
                   <h3 className="font-semibold">UPI</h3>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground">
-                  <b>greenearth@upi</b>
+                  <b>prakritisewa@upi</b>
                 </p>
                 <div className="mt-4 grid size-40 place-items-center rounded-2xl bg-secondary text-xs text-muted-foreground">
                   QR code placeholder
@@ -108,10 +121,14 @@ function DonatePage() {
                   <h3 className="font-semibold">Bank Transfer</h3>
                 </div>
                 <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-                  <dt className="text-muted-foreground">Account</dt><dd>Green Earth Mission</dd>
-                  <dt className="text-muted-foreground">A/c No.</dt><dd>1234 5678 9012 3456</dd>
-                  <dt className="text-muted-foreground">IFSC</dt><dd>HDFC0001234</dd>
-                  <dt className="text-muted-foreground">Type</dt><dd>Savings</dd>
+                  <dt className="text-muted-foreground">Account</dt>
+                  <dd>Prakriti Sewa</dd>
+                  <dt className="text-muted-foreground">A/c No.</dt>
+                  <dd>1234 5678 9012 3456</dd>
+                  <dt className="text-muted-foreground">IFSC</dt>
+                  <dd>HDFC0001234</dd>
+                  <dt className="text-muted-foreground">Type</dt>
+                  <dd>Savings</dd>
                 </dl>
               </div>
               <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
@@ -120,8 +137,8 @@ function DonatePage() {
                   <h3 className="font-semibold">Transparent, always</h3>
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  78% field ops · 15% monitoring · 7% administration. Audited annual reports
-                  published every June.
+                  78% field work · 15% monitoring · 7% administration. Impact reports are prepared
+                  for donors and volunteers.
                 </p>
               </div>
             </div>
@@ -133,8 +150,8 @@ function DonatePage() {
               <div>
                 <h3 className="font-display text-2xl font-semibold">Thank you.</h3>
                 <p className="mt-2 max-w-2xl text-white/85">
-                  You aren't buying a service — you're keeping something alive. We will send you
-                  photos and updates from the field for every ₹5,000 donated.
+                  You are not buying a service. You are keeping something alive for children, birds,
+                  soil, water, and the future.
                 </p>
               </div>
             </div>

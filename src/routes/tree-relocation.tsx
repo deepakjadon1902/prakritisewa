@@ -8,8 +8,12 @@ import relocImg from "../assets/tree-relocation.jpg";
 export const Route = createFileRoute("/tree-relocation")({
   head: () => ({
     meta: [
-      { title: "Tree Relocation | Saving Mature Trees | Green Earth Mission" },
-      { name: "description", content: "How we safely uproot, transport, and re-plant mature trees threatened by construction — with a 3-year monitoring program." },
+      { title: "Tree Relocation | Saving Mature Trees | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "How we safely uproot, transport, and re-plant mature trees threatened by construction — with a 3-year monitoring program.",
+      },
       { property: "og:url", content: "/tree-relocation" },
     ],
     links: [{ rel: "canonical", href: "/tree-relocation" }],

@@ -1,59 +1,63 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { ExternalLink } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
-import hero from "../assets/hero-tree.jpg";
-import volunteers from "../assets/volunteers-planting.jpg";
-import reloc from "../assets/tree-relocation.jpg";
-import sapling from "../assets/sapling-hands.jpg";
-import aerial from "../assets/forest-aerial.jpg";
-
-const images = [
-  { src: aerial, alt: "Aerial view of a lush Indian forest" },
-  { src: volunteers, alt: "Volunteers planting a sapling" },
-  { src: hero, alt: "Ancient banyan tree in golden light" },
-  { src: sapling, alt: "Child holding a sapling in cupped hands" },
-  { src: reloc, alt: "Mature tree being relocated" },
-  { src: aerial, alt: "Forest canopy from above" },
-  { src: volunteers, alt: "Community plantation drive" },
-  { src: hero, alt: "Old-growth tree at sunrise" },
-];
+import { absoluteUrl } from "../constants/site";
+import { sourcedImages } from "../data/media";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery | Photos from the Field | Green Earth Mission" },
-      { name: "description", content: "A visual diary of tree rescues, plantation drives, volunteer moments, and forests reclaimed across India." },
-      { property: "og:url", content: "/gallery" },
+      { title: "गैलरी | स्रोत सहित प्रकृति और वृक्षारोपण तस्वीरें | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "प्रकृति सेवा की स्रोत-सहित गैलरी में पेड़, वन, पौधे, वृक्षारोपण और प्रेरक पर्यावरण छवियां देखें।",
+      },
+      { property: "og:url", content: absoluteUrl("/gallery") },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/gallery") }],
   }),
   component: () => (
     <>
       <PageHero
-        eyebrow="Gallery"
-        title={<>Twelve years, one canopy — in pictures.</>}
-        sub="Every frame is someone who cared enough to show up, and a tree that stood up again."
+        eyebrow="गैलरी"
+        title={<>हर तस्वीर एक जिम्मेदारी की याद है।</>}
+        sub="यह गैलरी इंटरनेट स्रोतों और खुले मीडिया से प्रेरित है; प्रत्येक छवि का स्रोत साथ दिया गया है।"
       />
       <section className="py-16 sm:py-24">
         <Container>
           <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-            {images.map((img, i) => (
+            {sourcedImages.concat(sourcedImages.slice(0, 2)).map((img, i) => (
               <motion.figure
-                key={i}
+                key={`${img.src}-${i}`}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: (i % 6) * 0.04 }}
-                className="mb-4 overflow-hidden rounded-2xl shadow-soft break-inside-avoid"
+                className="mb-4 overflow-hidden rounded-2xl bg-card shadow-soft break-inside-avoid"
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
                   decoding="async"
+                  referrerPolicy="no-referrer"
                   className="size-full object-cover transition-transform duration-700 hover:scale-105"
                 />
+                <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-xs text-muted-foreground">
+                  <span>{img.credit}</span>
+                  <a
+                    href={img.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-[color:var(--forest)]"
+                  >
+                    स्रोत
+                    <ExternalLink className="size-3" aria-hidden="true" />
+                  </a>
+                </figcaption>
               </motion.figure>
             ))}
           </div>

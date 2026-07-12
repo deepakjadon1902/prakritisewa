@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Prakriti Sewa social preview">
+  <rect width="1200" height="630" fill="#fbfaf2"/>
+  <circle cx="980" cy="120" r="220" fill="#dceec8"/>
+  <circle cx="112" cy="546" r="180" fill="#f7d36b" opacity=".65"/>
+  <path d="M820 472c-18-89-18-158 0-220" fill="none" stroke="#2e5e3a" stroke-width="28" stroke-linecap="round"/>
+  <path d="M812 262c-120-9-185-81-185-176 104-9 199 47 215 153" fill="#91c46b"/>
+  <path d="M844 276c107-23 185-100 176-198-108 4-194 70-204 175" fill="#2e5e3a"/>
+  <text x="92" y="210" fill="#183225" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="800">Prakriti Sewa</text>
+  <text x="94" y="292" fill="#2e5e3a" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">प्रकृति सेवा</text>
+  <text x="96" y="378" fill="#486152" font-family="Inter, Arial, sans-serif" font-size="32">Saving trees. Relocating the endangered.</text>
+  <text x="96" y="424" fill="#486152" font-family="Inter, Arial, sans-serif" font-size="32">Planting native life for Mother Nature.</text>
+</svg>

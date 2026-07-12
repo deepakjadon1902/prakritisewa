@@ -5,8 +5,12 @@ import { Container } from "../components/layout/Container";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms & Conditions | Green Earth Mission" },
-      { name: "description", content: "The terms that govern your use of the Green Earth Mission website, donations, and volunteer participation." },
+      { title: "Terms & Conditions | Prakriti Sewa" },
+      {
+        name: "description",
+        content:
+          "The terms that govern your use of the Prakriti Sewa website, donations, and volunteer participation.",
+      },
       { property: "og:url", content: "/terms" },
     ],
     links: [{ rel: "canonical", href: "/terms" }],
@@ -18,10 +22,9 @@ export const Route = createFileRoute("/terms")({
         <Container size="sm">
           <article className="space-y-6 text-foreground/85">
             <p>
-              By using this website you agree to these terms. Green Earth Mission is a
-              not-for-profit citizen movement. Content on this site is provided for information
-              and awareness; individual results in the field vary based on site, species, and
-              seasonal conditions.
+              By using this website you agree to these terms. Prakriti Sewa is a not-for-profit
+              citizen movement. Content on this site is provided for information and awareness;
+              individual results in the field vary based on site, species, and seasonal conditions.
             </p>
             <h2 className="font-display text-2xl font-semibold text-foreground">Donations</h2>
             <p>
@@ -31,14 +34,16 @@ export const Route = createFileRoute("/terms")({
             </p>
             <h2 className="font-display text-2xl font-semibold text-foreground">Volunteering</h2>
             <p>
-              Volunteers participate at their own risk and are expected to follow safety
-              guidance shared by chapter leads. Photographs taken during activities may be used
-              for outreach unless you request otherwise.
+              Volunteers participate at their own risk and are expected to follow safety guidance
+              shared by chapter leads. Photographs taken during activities may be used for outreach
+              unless you request otherwise.
             </p>
-            <h2 className="font-display text-2xl font-semibold text-foreground">Intellectual property</h2>
+            <h2 className="font-display text-2xl font-semibold text-foreground">
+              Intellectual property
+            </h2>
             <p>
-              All text, images, and design elements are © Green Earth Mission unless credited
-              otherwise. You are welcome to share for non-commercial purposes with credit.
+              All text, images, and design elements are © Prakriti Sewa unless credited otherwise.
+              You are welcome to share for non-commercial purposes with credit.
             </p>
           </article>
         </Container>

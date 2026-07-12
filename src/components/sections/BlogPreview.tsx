@@ -12,16 +12,19 @@ export function BlogPreview() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             align="left"
-            eyebrow="Journal"
-            title="Latest from the field."
-            sub="Field notes, science, and stories from our chapters across India."
+            eyebrow="स्रोत सहित ब्लॉग"
+            title="सच्ची कहानियां, साफ स्रोत।"
+            sub="भारत के पेड़-प्रेमियों, गांवों और नागरिक प्रयासों से प्रेरित हिंदी लेख।"
           />
           <Link
             to="/blogs"
             className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold shadow-soft"
           >
-            All posts
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            सभी लेख
+            <ArrowRight
+              className="size-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
 
@@ -41,6 +44,7 @@ export function BlogPreview() {
                   alt={p.title}
                   loading="lazy"
                   decoding="async"
+                  referrerPolicy="no-referrer"
                   className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -56,9 +60,13 @@ export function BlogPreview() {
                 </div>
                 <h3 className="mt-4 text-lg font-semibold leading-snug">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
-                <p className="mt-4 text-sm font-semibold text-[color:var(--forest)]">
-                  Read article →
-                </p>
+                <Link
+                  to="/blogs/$slug"
+                  params={{ slug: p.slug }}
+                  className="mt-4 inline-flex text-sm font-semibold text-[color:var(--forest)]"
+                >
+                  पूरा पढ़ें →
+                </Link>
               </div>
             </motion.article>
           ))}

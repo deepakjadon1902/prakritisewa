@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Prakriti Sewa">
+  <rect width="180" height="180" rx="42" fill="#2e5e3a"/>
+  <path d="M90 145c-6-27-6-49 0-69" fill="none" stroke="#f7d36b" stroke-width="11" stroke-linecap="round"/>
+  <path d="M88 79c-36-3-55-24-55-52 31-3 59 14 64 45" fill="#dceec8"/>
+  <path d="M96 82c32-7 55-30 52-59-32 1-58 21-61 52" fill="#91c46b"/>
+  <path d="M90 95c-21-1-38 11-47 32 24 9 48-1 59-24" fill="#f7d36b"/>
+</svg>

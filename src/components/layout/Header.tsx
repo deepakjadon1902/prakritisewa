@@ -22,11 +22,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 glass">
       <Container className="flex h-16 items-center justify-between md:h-20">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight">
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight"
+        >
           <span className="grid size-9 place-items-center rounded-full gradient-forest text-primary-foreground shadow-soft">
             <Leaf className="size-5" aria-hidden="true" />
           </span>
-          <span>Green Earth Mission</span>
+          <span>Prakriti Sewa</span>
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">

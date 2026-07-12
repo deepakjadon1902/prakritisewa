@@ -7,6 +7,10 @@ export default defineConfig({
   plugins: [
     tanstackStart({
       server: { entry: "server" },
+      spa: {
+        enabled: true,
+        maskPath: "/",
+      },
     }),
     react(),
     tailwindcss(),

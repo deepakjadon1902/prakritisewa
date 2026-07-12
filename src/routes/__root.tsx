@@ -166,11 +166,26 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js").catch((error) => {
-        console.error("Service worker registration failed", error);
-      });
+    if (!("serviceWorker" in navigator)) return;
+
+    const registerServiceWorker = () => {
+      navigator.serviceWorker
+        .register("/sw.js", { scope: "/" })
+        .then((registration) => {
+          registration.waiting?.postMessage({ type: "SKIP_WAITING" });
+        })
+        .catch((error) => {
+          console.error("Service worker registration failed", error);
+        });
+    };
+
+    if (document.readyState === "complete") {
+      registerServiceWorker();
+      return;
     }
+
+    window.addEventListener("load", registerServiceWorker, { once: true });
+    return () => window.removeEventListener("load", registerServiceWorker);
   }, []);
 
   return (

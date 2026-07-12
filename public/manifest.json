@@ -2,12 +2,30 @@
   "name": "Prakriti Sewa",
   "short_name": "Prakriti Sewa",
   "description": "A selfless movement to save trees, relocate endangered trees, plant native saplings, and protect Mother Nature.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
+  "lang": "hi-IN",
+  "dir": "ltr",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
   "background_color": "#fbfaf2",
   "theme_color": "#2e5e3a",
+  "categories": ["education", "lifestyle", "news"],
   "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/favicon.svg",
       "sizes": "any",

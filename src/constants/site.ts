@@ -1,6 +1,6 @@
 export const SITE_URL =
   (import.meta.env.VITE_BASE_URL as string | undefined)?.replace(/\/$/, "") ||
-  "https://prakritisewa.org";
+  "https://prakritisewa.vercel.app";
 
 export const SITE_NAME = "Prakriti Sewa";
 export const SITE_TITLE = "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा";

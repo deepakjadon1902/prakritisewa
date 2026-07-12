@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prakritisewa.org/sitemap.xml
+Sitemap: https://prakritisewa.vercel.app/sitemap.xml

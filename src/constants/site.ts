@@ -2,12 +2,21 @@ export const SITE_URL =
   (import.meta.env.VITE_BASE_URL as string | undefined)?.replace(/\/$/, "") ||
   "https://prakritisewa.vercel.app";
 
-export const SITE_NAME = "Prakriti Sewa";
-export const SITE_TITLE = "प्रकृति सेवा | पेड़ों की रक्षा हेतु निःस्वार्थ सेवा";
+export const SITE_NAME = "Vriksh Rakshak Dal Sewa Trust";
+export const SITE_HINDI_NAME = "वृक्ष रक्षक दल सेवा ट्रस्ट";
+export const SITE_TITLE =
+  "Vriksh Rakshak Dal Sewa Trust | Tree Plantation & Protection in Vrindavan";
 export const SITE_DESCRIPTION =
-  "प्रकृति सेवा पेड़ों को बचाने, असुरक्षित पेड़ों को पुनर्स्थापित करने, देशी पौधे लगाने और समाज को प्रकृति रक्षा से जोड़ने का निःस्वार्थ अभियान है।";
+  "Vriksh Rakshak Dal Sewa Trust is a registered Public Charitable Trust dedicated to tree plantation, tree protection, environmental conservation, and social welfare activities in Vrindavan, Mathura, and the Braj region.";
+export const TRUST_PAN = "AAETV7094D";
+export const TRUST_EMAIL = "vrikshrakshakdal@gmail.com";
+export const TRUST_LOCATION = "Vrindavan, Mathura, Uttar Pradesh, India";
+export const FACEBOOK_PROFILE = "https://www.facebook.com/ganesh.baghel.583";
+export const LOGO_IMAGE = "/vriksh-rakshak-logo.jpeg";
+export const APP_ICON_192 = "/icon-192.jpg";
+export const APP_ICON_512 = "/icon-512.jpg";
 
-export const defaultOgImage = `${SITE_URL}/og-prakriti-sewa.svg`;
+export const defaultOgImage = `${SITE_URL}/og-vriksh-rakshak.jpg`;
 
 export function absoluteUrl(path = "/") {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

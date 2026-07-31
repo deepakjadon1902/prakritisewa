@@ -1,4 +1,4 @@
-const VERSION = "prakriti-sewa-v3";
+const VERSION = "vriksh-rakshak-v4";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const IMAGE_CACHE = `${VERSION}-images`;
@@ -8,11 +8,12 @@ const APP_SHELL_URLS = [
   "/_shell.html",
   "/offline.html",
   "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png",
-  "/favicon.svg",
-  "/apple-touch-icon.svg",
-  "/og-prakriti-sewa.svg",
+  "/icon-192.jpg",
+  "/icon-512.jpg",
+  "/favicon-48.png",
+  "/apple-touch-icon.png",
+  "/vriksh-rakshak-logo.jpeg",
+  "/og-vriksh-rakshak.jpg",
   "/robots.txt",
   "/sitemap.xml",
 ];

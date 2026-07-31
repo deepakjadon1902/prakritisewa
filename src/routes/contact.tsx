@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Facebook, Mail, MapPin, UserRound } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
+import {
+  FACEBOOK_PROFILE,
+  SITE_HINDI_NAME,
+  SITE_NAME,
+  TRUST_EMAIL,
+  TRUST_LOCATION,
+} from "../constants/site";
 
 const schema = z.object({
   name: z.string().trim().min(2).max(80),
@@ -16,11 +22,11 @@ const schema = z.object({
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Prakriti Sewa" },
+      { title: "Contact Us | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "Report an endangered tree, ask a question, or partner with us. We reply within two working days.",
+          "Contact Vriksh Rakshak Dal Sewa Trust in Vrindavan, Mathura for tree plantation, volunteering, public awareness, and green collaborations.",
       },
       { property: "og:url", content: "/contact" },
     ],
@@ -51,39 +57,48 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title={<>We'd love to hear from you.</>}
-        sub="Report a tree, propose a partnership, or just say hi. All messages read by a real human."
+        title={<>Connect with {SITE_NAME}.</>}
+        sub="For volunteering, partnerships, tree plantation campaigns, awareness programs, and community green initiatives."
       />
       <section className="py-16 sm:py-24">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-            <div className="space-y-4">
-              <InfoCard icon={Mail} title="Email" value="hello@greenearthmission.org" />
-              <InfoCard icon={Phone} title="Phone" value="+91 98765 43210" />
-              <InfoCard
-                icon={MapPin}
-                title="Address"
-                value="12 Green Lane, Sector 5, Pune 411001, India"
-              />
-              <InfoCard icon={Clock} title="Hours" value="Mon–Sat · 9:30 AM – 6:30 PM IST" />
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
-              >
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <div className="divide-y divide-border border-y border-border">
+                <InfoRow icon={UserRound} title="Contact Person" value="Ganesh Baghel" />
+                <InfoRow
+                  icon={Mail}
+                  title="Email"
+                  value={TRUST_EMAIL}
+                  href={`mailto:${TRUST_EMAIL}`}
+                />
+                <InfoRow icon={MapPin} title="Location" value={TRUST_LOCATION} />
+                <InfoRow
+                  icon={Facebook}
+                  title="Facebook Profile"
+                  value={FACEBOOK_PROFILE}
+                  href={FACEBOOK_PROFILE}
+                />
+                <InfoRow
+                  icon={Facebook}
+                  title="Facebook Page"
+                  value={`${SITE_HINDI_NAME} | Page ID: 802366332949560`}
+                />
+              </div>
+
+              <div className="mt-8 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
                 <div className="aspect-[16/10] w-full bg-secondary">
                   <iframe
-                    title="Prakriti Sewa location"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=73.83%2C18.51%2C73.87%2C18.55&layer=mapnik"
+                    title="Vriksh Rakshak Dal Sewa Trust location"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=77.64%2C27.54%2C77.78%2C27.62&layer=mapnik"
                     className="size-full border-0"
                     loading="lazy"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
 
-            <div className="rounded-[2rem] border border-border bg-card p-6 shadow-lift sm:p-10">
+            <div className="rounded-lg border border-border bg-card p-6 shadow-lift sm:p-10">
               {ok ? (
                 <div className="py-16 text-center">
                   <CheckCircle2
@@ -91,7 +106,7 @@ function ContactPage() {
                     aria-hidden="true"
                   />
                   <h2 className="mt-4 font-display text-2xl font-semibold">Message received.</h2>
-                  <p className="mt-2 text-muted-foreground">We'll get back to you shortly.</p>
+                  <p className="mt-2 text-muted-foreground">We will get back to you shortly.</p>
                   <button
                     type="button"
                     onClick={() => setOk(false)}
@@ -120,7 +135,7 @@ function ContactPage() {
                       name="message"
                       rows={6}
                       maxLength={1000}
-                      className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+                      className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
                     />
                     {errors.message && (
                       <p className="mt-1 text-xs text-destructive">{errors.message}</p>
@@ -142,26 +157,30 @@ function ContactPage() {
   );
 }
 
-function InfoCard({
+function InfoRow({
   icon: Icon,
   title,
   value,
+  href,
 }: {
   icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
   title: string;
   value: string;
+  href?: string;
 }) {
   return (
-    <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft">
-      <div className="grid size-10 place-items-center rounded-xl bg-secondary text-[color:var(--forest)]">
+    <div className="grid gap-3 py-5 sm:grid-cols-[44px_150px_1fr] sm:items-start">
+      <div className="grid size-10 place-items-center rounded-md bg-secondary text-[color:var(--forest)]">
         <Icon className="size-5" aria-hidden={true} />
       </div>
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {title}
-        </p>
-        <p className="mt-0.5 font-medium">{value}</p>
-      </div>
+      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{title}</p>
+      {href ? (
+        <a href={href} className="break-words font-medium hover:underline">
+          {value}
+        </a>
+      ) : (
+        <p className="break-words font-medium">{value}</p>
+      )}
     </div>
   );
 }
@@ -189,7 +208,7 @@ function TextField({
         name={name}
         type={type}
         maxLength={255}
-        className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>

@@ -15,7 +15,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Read persisted preference on the client only (avoids hydration mismatch).
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("prakriti_sewa_lang");
+      const saved = window.localStorage.getItem("vriksh_rakshak_lang");
       if (saved === "en" || saved === "hi") setLangState(saved);
     } catch {
       /* ignore storage errors */
@@ -25,7 +25,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLang = (l: Lang) => {
     setLangState(l);
     try {
-      window.localStorage.setItem("prakriti_sewa_lang", l);
+      window.localStorage.setItem("vriksh_rakshak_lang", l);
     } catch {
       /* ignore */
     }

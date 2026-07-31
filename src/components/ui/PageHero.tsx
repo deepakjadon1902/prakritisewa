@@ -14,9 +14,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-secondary/50 pt-16 pb-20 sm:pt-24 sm:pb-24">
-      <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-[color:var(--leaf)]/20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 size-96 rounded-full bg-[color:var(--sun)]/20 blur-3xl" />
+    <section className="relative overflow-hidden border-b border-border bg-secondary/45 pt-14 pb-16 sm:pt-20 sm:pb-20">
       <Container className="relative">
         {eyebrow && (
           <motion.p

@@ -9,11 +9,11 @@ import { sourcedImages } from "../data/media";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "गैलरी | स्रोत सहित प्रकृति और वृक्षारोपण तस्वीरें | Prakriti Sewa" },
+      { title: "Gallery | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "प्रकृति सेवा की स्रोत-सहित गैलरी में पेड़, वन, पौधे, वृक्षारोपण और प्रेरक पर्यावरण छवियां देखें।",
+          "A source-linked gallery of trees, forests, saplings, plantation work, and environmental conservation imagery.",
       },
       { property: "og:url", content: absoluteUrl("/gallery") },
     ],
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/gallery")({
   component: () => (
     <>
       <PageHero
-        eyebrow="गैलरी"
-        title={<>हर तस्वीर एक जिम्मेदारी की याद है।</>}
-        sub="यह गैलरी इंटरनेट स्रोतों और खुले मीडिया से प्रेरित है; प्रत्येक छवि का स्रोत साथ दिया गया है।"
+        eyebrow="Gallery"
+        title={<>A visual reminder of our responsibility.</>}
+        sub="Trees, saplings, forests, and community action connected to the Trust's green mission."
       />
       <section className="py-16 sm:py-24">
         <Container>
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/gallery")({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: (i % 6) * 0.04 }}
-                className="mb-4 overflow-hidden rounded-2xl bg-card shadow-soft break-inside-avoid"
+                className="mb-4 overflow-hidden rounded-lg bg-card shadow-soft break-inside-avoid"
               >
                 <img
                   src={img.src}
@@ -54,7 +54,7 @@ export const Route = createFileRoute("/gallery")({
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 font-semibold text-[color:var(--forest)]"
                   >
-                    स्रोत
+                    Source
                     <ExternalLink className="size-3" aria-hidden="true" />
                   </a>
                 </figcaption>

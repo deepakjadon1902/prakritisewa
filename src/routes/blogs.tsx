@@ -9,11 +9,11 @@ import { posts } from "../data/blog";
 export const Route = createFileRoute("/blogs")({
   head: () => ({
     meta: [
-      { title: "ब्लॉग | पेड़, प्रकृति और वास्तविक प्रेरक कहानियां | Prakriti Sewa" },
+      { title: "Environmental Resources | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "प्रकृति सेवा ब्लॉग में पेड़ संरक्षण, वृक्षारोपण, पर्यावरण जागरूकता और भारत की वास्तविक हरित कहानियां पढ़ें।",
+          "Read source-linked environmental stories and resources about tree plantation, conservation, and community green action in India.",
       },
       { property: "og:url", content: absoluteUrl("/blogs") },
     ],
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/blogs")({
   component: () => (
     <>
       <PageHero
-        eyebrow="ब्लॉग"
-        title={<>भारत की सच्ची हरित कहानियां।</>}
-        sub="यहां लिखी हर कहानी सार्वजनिक स्रोतों से प्रेरित, संक्षेपित और स्रोत-लिंक के साथ प्रस्तुत है।"
+        eyebrow="Resources"
+        title={<>Stories that inspire green action.</>}
+        sub="Source-linked reading on tree plantation, environmental conservation, and community participation."
       />
       <section className="py-16 sm:py-24">
         <Container>
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/blogs")({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1"
+                className="group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img
@@ -61,14 +61,14 @@ export const Route = createFileRoute("/blogs")({
                   </div>
                   <h2 className="mt-4 text-lg font-semibold leading-snug">{p.title}</h2>
                   <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
-                  <p className="mt-4 text-xs text-muted-foreground">लेख: {p.author}</p>
+                  <p className="mt-4 text-xs text-muted-foreground">Author: {p.author}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-3">
                     <Link
                       to="/blogs/$slug"
                       params={{ slug: p.slug }}
                       className="inline-flex text-sm font-semibold text-[color:var(--forest)]"
                     >
-                      पूरा पढ़ें →
+                      Read more
                     </Link>
                     <a
                       href={p.sources[0]?.url}
@@ -76,7 +76,7 @@ export const Route = createFileRoute("/blogs")({
                       rel="noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground"
                     >
-                      स्रोत
+                      Source
                       <ExternalLink className="size-3" aria-hidden="true" />
                     </a>
                   </div>

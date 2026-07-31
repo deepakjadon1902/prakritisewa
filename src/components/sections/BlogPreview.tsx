@@ -12,15 +12,15 @@ export function BlogPreview() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             align="left"
-            eyebrow="स्रोत सहित ब्लॉग"
-            title="सच्ची कहानियां, साफ स्रोत।"
-            sub="भारत के पेड़-प्रेमियों, गांवों और नागरिक प्रयासों से प्रेरित हिंदी लेख।"
+            eyebrow="Resources"
+            title="Source-linked stories for green action."
+            sub="Environmental reading that supports public awareness, tree protection, and community participation."
           />
           <Link
             to="/blogs"
             className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold shadow-soft"
           >
-            सभी लेख
+            All resources
             <ArrowRight
               className="size-4 transition-transform group-hover:translate-x-0.5"
               aria-hidden="true"
@@ -36,7 +36,7 @@ export function BlogPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-transform hover:-translate-y-1"
+              className="group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
@@ -65,7 +65,7 @@ export function BlogPreview() {
                   params={{ slug: p.slug }}
                   className="mt-4 inline-flex text-sm font-semibold text-[color:var(--forest)]"
                 >
-                  पूरा पढ़ें →
+                  Read more
                 </Link>
               </div>
             </motion.article>

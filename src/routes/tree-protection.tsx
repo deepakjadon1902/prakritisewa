@@ -1,6 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { ShieldCheck, TriangleAlert, PhoneCall, ClipboardCheck } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
 import { SectionHeader } from "../components/ui/SectionHeader";
@@ -8,35 +6,31 @@ import { DonateCta } from "../components/sections/CtaBanners";
 
 const pillars = [
   {
-    icon: TriangleAlert,
-    title: "Rapid Response",
-    desc: "48-hour visits to any tree flagged as at-risk in our operating cities.",
+    title: "Safeguarding Saplings",
+    desc: "Protection support so newly planted trees can survive beyond the campaign day.",
   },
   {
-    icon: ShieldCheck,
-    title: "Legal Advocacy",
-    desc: "We help citizens challenge illegal felling and stop-work notices where needed.",
+    title: "Watering & Care",
+    desc: "Regular care, maintenance, and monitoring for planted saplings.",
   },
   {
-    icon: ClipboardCheck,
-    title: "Health Audits",
-    desc: "Free arborist audits for schools, campuses, and residential communities.",
+    title: "Community Monitoring",
+    desc: "Local volunteers and citizens help watch over green spaces and report needs.",
   },
   {
-    icon: PhoneCall,
-    title: "24×7 Helpline",
-    desc: "A citizen hotline that anyone can call to report an endangered tree.",
+    title: "Public Awareness",
+    desc: "Outreach activities that encourage citizens, students, and institutions to protect trees.",
   },
 ];
 
 export const Route = createFileRoute("/tree-protection")({
   head: () => ({
     meta: [
-      { title: "Tree Protection & Rescue | Prakriti Sewa" },
+      { title: "Tree Protection & Care | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "How we protect India's endangered trees — rapid response, legal advocacy, health audits, and a citizen helpline.",
+          "Tree protection, sapling care, watering, monitoring, and public awareness by Vriksh Rakshak Dal Sewa Trust.",
       },
       { property: "og:url", content: "/tree-protection" },
     ],
@@ -46,28 +40,22 @@ export const Route = createFileRoute("/tree-protection")({
     <>
       <PageHero
         eyebrow="Tree Protection"
-        title={<>Standing between chainsaws and centuries of shade.</>}
-        sub="Every year thousands of healthy trees are lost to construction, disease, and neglect. This is how we push back."
+        title={<>Plantation succeeds when trees are protected.</>}
+        sub="The Trust focuses on monitoring, watering, protection, and maintenance of planted saplings."
       />
       <section className="py-24">
         <Container>
-          <SectionHeader eyebrow="How we protect" title="Four pillars of protection." />
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
-            {pillars.map(({ icon: Icon, title, desc }, i) => (
-              <motion.article
-                key={title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="rounded-3xl border border-border bg-card p-8 shadow-soft"
-              >
-                <div className="grid size-12 place-items-center rounded-2xl gradient-forest text-primary-foreground">
-                  <Icon className="size-6" aria-hidden="true" />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold">{title}</h3>
-                <p className="mt-2 text-muted-foreground">{desc}</p>
-              </motion.article>
+          <SectionHeader
+            align="left"
+            eyebrow="How we protect"
+            title="Long-term care after plantation."
+          />
+          <div className="mt-10 divide-y divide-border border-y border-border">
+            {pillars.map(({ title, desc }) => (
+              <article key={title} className="grid gap-2 py-6 md:grid-cols-[260px_1fr]">
+                <h3 className="text-lg font-semibold leading-6">{title}</h3>
+                <p className="leading-7 text-muted-foreground">{desc}</p>
+              </article>
             ))}
           </div>
           <div className="mt-12 text-center">
@@ -75,7 +63,7 @@ export const Route = createFileRoute("/tree-protection")({
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-[color:var(--forest)] px-6 py-3 text-sm font-semibold text-primary-foreground"
             >
-              Report a tree in danger
+              Contact for tree protection work
             </Link>
           </div>
         </Container>

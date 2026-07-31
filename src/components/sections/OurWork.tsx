@@ -1,63 +1,53 @@
-import { motion } from "motion/react";
-import { HandHeart, Recycle, Sprout, Trees, Megaphone } from "lucide-react";
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 
 const items = [
   {
-    icon: HandHeart,
-    title: "Tree Rescue",
-    desc: "We respond to reports of endangered trees threatened by construction, disease, or neglect — often within hours.",
+    title: "Tree Plantation Campaigns",
+    desc: "Plantation drives in public places, schools, temples, ashrams, and community areas.",
   },
   {
-    icon: Recycle,
-    title: "Tree Relocation",
-    desc: "Mature trees are carefully uprooted with intact root balls and given a new home where they can thrive.",
+    title: "Tree Protection & Care",
+    desc: "Regular monitoring, watering, protection, and maintenance of planted saplings.",
   },
   {
-    icon: Sprout,
-    title: "Tree Plantation",
-    desc: "Native species, chosen for each region, planted with the community and monitored for years, not weeks.",
+    title: "Environmental Awareness Programs",
+    desc: "Awareness rallies, seminars, educational campaigns, and public outreach activities.",
   },
   {
-    icon: Trees,
-    title: "Tree Care",
-    desc: "Ongoing water, mulch, pruning and health checks. The first three years decide a tree's next century.",
+    title: "Community Green Initiatives",
+    desc: "Collaborative plantation and conservation programs with local communities and volunteers.",
   },
   {
-    icon: Megaphone,
-    title: "Community Awareness",
-    desc: "School programs, city walks, and workshops that reconnect people with the trees in their own neighborhoods.",
+    title: "School & Youth Participation",
+    desc: "Encouraging students and youth to participate in environmental activities.",
+  },
+  {
+    title: "Institutional & Religious Collaborations",
+    desc: "Developing green campuses and environmentally responsible community spaces.",
   },
 ];
 
 export function OurWork() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-20 sm:py-24">
       <Container>
-        <SectionHeader
-          eyebrow="Our Work"
-          title="Five kinds of care, one shared canopy."
-          sub="From emergency rescue to long-term stewardship — this is how we show up for trees, every single day."
-        />
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ icon: Icon, title, desc }, i) => (
-            <motion.article
-              key={title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift"
-            >
-              <div className="absolute -right-10 -top-10 size-40 rounded-full bg-[color:var(--leaf)]/10 opacity-0 blur-3xl transition-opacity group-hover:opacity-100" />
-              <div className="grid size-12 place-items-center rounded-2xl gradient-forest text-primary-foreground shadow-soft">
-                <Icon className="size-6" aria-hidden="true" />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-            </motion.article>
-          ))}
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <SectionHeader
+            align="left"
+            eyebrow="Our Services"
+            title="Practical environmental work rooted in the community."
+            sub="The Trust brings citizens, institutions, students, and volunteers together for tree plantation, protection, and public awareness."
+          />
+
+          <div className="divide-y divide-border border-y border-border">
+            {items.map((item) => (
+              <article key={item.title} className="grid gap-2 py-5 sm:grid-cols-[240px_1fr]">
+                <h3 className="text-base font-semibold leading-6 text-foreground">{item.title}</h3>
+                <p className="text-sm leading-6 text-muted-foreground">{item.desc}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </Container>
     </section>

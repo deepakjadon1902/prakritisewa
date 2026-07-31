@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
+import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
-import { CheckCircle2 } from "lucide-react";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -12,18 +12,18 @@ const schema = z.object({
   city: z.string().trim().min(2).max(80),
   occupation: z.string().trim().max(80).optional().or(z.literal("")),
   availability: z.string().min(1, "Pick your availability"),
-  experience: z.string().max(500).optional().or(z.literal("")),
+  interest: z.string().min(1, "Pick an area of interest"),
   why: z.string().trim().min(10, "Tell us a little more").max(500),
 });
 
 export const Route = createFileRoute("/volunteer")({
   head: () => ({
     meta: [
-      { title: "Become a Volunteer | Prakriti Sewa" },
+      { title: "Become a Volunteer | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "Join a chapter near you. Plantation drives, awareness walks, tree audits, weekend caretaking — pick what fits your life.",
+          "Become a volunteer for tree plantation, tree protection, environmental awareness, and green initiatives in Vrindavan and Braj region.",
       },
       { property: "og:url", content: "/volunteer" },
     ],
@@ -55,21 +55,20 @@ function VolunteerPage() {
     <>
       <PageHero
         eyebrow="Volunteer"
-        title={<>Give one Sunday. Change a neighborhood.</>}
-        sub="We'll train you, feed you, and thank you. No experience needed — just willingness and comfortable shoes."
+        title={<>Become part of the green mission.</>}
+        sub="Join tree plantation, tree protection, awareness programs, youth participation, and community green initiatives."
       />
       <section className="py-16 sm:py-24">
         <Container size="sm">
           {submitted ? (
-            <div className="rounded-3xl border border-border bg-card p-10 text-center shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-10 text-center shadow-soft">
               <CheckCircle2
                 className="mx-auto size-12 text-[color:var(--leaf)]"
                 aria-hidden="true"
               />
-              <h2 className="mt-4 font-display text-2xl font-semibold">Welcome to the movement.</h2>
+              <h2 className="mt-4 font-display text-2xl font-semibold">Thank you for joining.</h2>
               <p className="mt-2 text-muted-foreground">
-                Your local chapter lead will reach out within 2 working days. Meanwhile, follow us
-                on social for the next drive near you.
+                The Trust will review your details and contact you about upcoming campaigns.
               </p>
               <button
                 type="button"
@@ -83,7 +82,7 @@ function VolunteerPage() {
             <form
               onSubmit={onSubmit}
               noValidate
-              className="rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-10"
+              className="rounded-lg border border-border bg-card p-6 shadow-soft sm:p-10"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Full name" name="name" error={errors.name} required />
@@ -91,36 +90,27 @@ function VolunteerPage() {
                 <Field label="Phone" name="phone" type="tel" error={errors.phone} required />
                 <Field label="City" name="city" error={errors.city} required />
                 <Field label="Occupation" name="occupation" error={errors.occupation} />
-                <div>
-                  <label className="mb-1.5 block text-sm font-semibold" htmlFor="availability">
-                    Availability <span className="text-destructive">*</span>
-                  </label>
-                  <select
-                    id="availability"
-                    name="availability"
-                    required
-                    defaultValue=""
-                    className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
-                  >
-                    <option value="" disabled>
-                      Select an option
-                    </option>
-                    <option value="weekends">Weekends</option>
-                    <option value="weekdays">Weekdays</option>
-                    <option value="anytime">Anytime</option>
-                    <option value="events">Only large events</option>
-                  </select>
-                  {errors.availability && (
-                    <p className="mt-1 text-xs text-destructive">{errors.availability}</p>
-                  )}
-                </div>
+                <SelectField
+                  label="Availability"
+                  name="availability"
+                  error={errors.availability}
+                  options={["Weekends", "Weekdays", "Campaign days", "Flexible"]}
+                  required
+                />
+                <SelectField
+                  label="Area of interest"
+                  name="interest"
+                  error={errors.interest}
+                  options={[
+                    "Tree plantation",
+                    "Tree protection and care",
+                    "Awareness programs",
+                    "School and youth activities",
+                    "Community outreach",
+                  ]}
+                  required
+                />
               </div>
-              <Field
-                label="Prior experience (optional)"
-                name="experience"
-                as="textarea"
-                error={errors.experience}
-              />
               <Field
                 label="Why do you want to join?"
                 name="why"
@@ -158,7 +148,7 @@ function Field({
   as?: "textarea";
 }) {
   const cls =
-    "w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40";
+    "w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40";
   return (
     <div className={as === "textarea" ? "sm:col-span-2 mt-5" : ""}>
       <label htmlFor={name} className="mb-1.5 block text-sm font-semibold">
@@ -169,6 +159,45 @@ function Field({
       ) : (
         <input id={name} name={name} type={type} maxLength={255} className={cls} />
       )}
+      {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
+    </div>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  options,
+  error,
+  required,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+  error?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="mb-1.5 block text-sm font-semibold" htmlFor={name}>
+        {label} {required && <span className="text-destructive">*</span>}
+      </label>
+      <select
+        id={name}
+        name={name}
+        required={required}
+        defaultValue=""
+        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+      >
+        <option value="" disabled>
+          Select an option
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
   );

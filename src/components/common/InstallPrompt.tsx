@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Download, X } from "lucide-react";
+import { SITE_NAME } from "../../constants/site";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -23,13 +24,13 @@ export function InstallPrompt() {
   if (!installEvent || dismissed) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-[80] mx-auto max-w-md rounded-2xl border border-border bg-card p-4 shadow-lift sm:left-auto">
+    <div className="fixed bottom-4 left-4 right-4 z-[80] mx-auto max-w-md rounded-lg border border-border bg-card p-4 shadow-lift sm:left-auto">
       <div className="flex items-start gap-3">
         <div className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-[color:var(--forest)]">
           <Download className="size-5" aria-hidden="true" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="font-semibold">Install Prakriti Sewa</p>
+          <p className="font-semibold">Install {SITE_NAME}</p>
           <p className="mt-1 text-sm text-muted-foreground">
             Add the app for faster access and offline reading.
           </p>

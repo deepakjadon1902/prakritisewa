@@ -2,15 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "../components/ui/PageHero";
 import { WhyTrees } from "../components/sections/WhyTrees";
 import { VolunteerCta } from "../components/sections/CtaBanners";
+import { OurWork } from "../components/sections/OurWork";
 
 export const Route = createFileRoute("/tree-plantation")({
   head: () => ({
     meta: [
-      { title: "Tree Plantation Drives | Prakriti Sewa" },
+      { title: "Tree Plantation Campaigns | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "Native species, chosen for each region, planted with the community and monitored for years. Join a plantation drive near you.",
+          "Tree plantation campaigns in public places, schools, temples, ashrams, and community areas across Vrindavan and the Braj region.",
       },
       { property: "og:url", content: "/tree-plantation" },
     ],
@@ -20,9 +21,10 @@ export const Route = createFileRoute("/tree-plantation")({
     <>
       <PageHero
         eyebrow="Tree Plantation"
-        title={<>Native trees. Local hands. Long memories.</>}
-        sub="We plant what belongs — peepal, neem, mahua, gulmohar, jamun — and we stay to make sure they live."
+        title={<>Plant trees where communities can protect them.</>}
+        sub="Plantation drives in public places, schools, temples, ashrams, and community areas with local participation."
       />
+      <OurWork />
       <WhyTrees />
       <VolunteerCta />
     </>

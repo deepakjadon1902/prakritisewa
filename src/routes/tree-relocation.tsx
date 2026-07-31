@@ -8,11 +8,11 @@ import relocImg from "../assets/tree-relocation.jpg";
 export const Route = createFileRoute("/tree-relocation")({
   head: () => ({
     meta: [
-      { title: "Tree Relocation | Saving Mature Trees | Prakriti Sewa" },
+      { title: "Tree Protection & Care | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "How we safely uproot, transport, and re-plant mature trees threatened by construction — with a 3-year monitoring program.",
+          "Tree care, monitoring, watering, protection, and maintenance of planted saplings by Vriksh Rakshak Dal Sewa Trust.",
       },
       { property: "og:url", content: "/tree-relocation" },
     ],
@@ -21,16 +21,16 @@ export const Route = createFileRoute("/tree-relocation")({
   component: () => (
     <>
       <PageHero
-        eyebrow="Tree Relocation"
-        title={<>A 90-year-old tree doesn't have to die because a road came through.</>}
-        sub="We've safely relocated 38,000+ mature trees with a survival rate of 84% — one of the highest documented in India."
+        eyebrow="Tree Care"
+        title={<>Nurture and safeguard planted trees.</>}
+        sub="The Trust focuses on survival and protection of planted trees rather than plantation numbers alone."
       />
       <section className="py-16">
         <Container>
-          <div className="overflow-hidden rounded-[2rem] shadow-lift">
+          <div className="overflow-hidden rounded-lg shadow-lift">
             <img
               src={relocImg}
-              alt="Mature tree being carefully uprooted for relocation"
+              alt="Tree care and protection work"
               width={1400}
               height={1000}
               loading="lazy"

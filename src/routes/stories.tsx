@@ -7,35 +7,35 @@ import { absoluteUrl } from "../constants/site";
 
 const stories = [
   {
-    title: "मोलाई वन: रेत पर उगा एक जीवन-घर",
-    location: "माजुली, असम",
+    title: "Molai Forest: one person's long commitment",
+    location: "Majuli, Assam",
     image:
       "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Forest%20Man%20of%20India%20Jadav%20Payeng.jpg",
-    body: "जादव पायेंग ने दशकों तक ब्रह्मपुत्र के रेतीले टापू पर पौधे लगाए और उनकी देखभाल की। आज यह प्रयास मोलाई वन के रूप में जैव-विविधता, धैर्य और व्यक्तिगत जिम्मेदारी का प्रतीक है।",
+    body: "Jadav Payeng's decades-long work on a river island shows how consistent care can turn degraded land into a living forest and inspire citizen responsibility.",
     source: { label: "Wikipedia: Jadav Payeng", url: "https://en.wikipedia.org/wiki/Jadav_Payeng" },
   },
   {
-    title: "पिपलांत्री: बेटी के जन्म पर 111 पेड़",
-    location: "राजसमंद, राजस्थान",
+    title: "Piplantri: trees for every daughter",
+    location: "Rajsamand, Rajasthan",
     image:
       "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=80",
-    body: "इस गांव ने बेटी के जन्म को पेड़ों के उत्सव से जोड़ा। 111 पेड़ लगाने की परंपरा ने हरियाली, जल और सामाजिक सम्मान को एक साथ आगे बढ़ाया।",
+    body: "The village tradition of planting trees for every girl child connects environmental care with community celebration and social dignity.",
     source: { label: "Wikipedia: Piplantri", url: "https://en.wikipedia.org/wiki/Piplantri" },
   },
   {
-    title: "चामी मुर्मू: महिलाओं के हाथों से उगी हरियाली",
-    location: "झारखंड",
+    title: "Chami Murmu: green leadership through communities",
+    location: "Jharkhand",
     image:
       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1400&q=80",
-    body: "चामी मुर्मू की कहानी बताती है कि जब महिलाएं और स्थानीय समुदाय पेड़ों की रक्षा को अपना काम मान लेते हैं, तो पौधे संख्या नहीं रहते; वे सामाजिक शक्ति बन जाते हैं।",
+    body: "Chami Murmu's work highlights how women and local communities can make tree protection a lasting social force.",
     source: { label: "Wikipedia: Chami Murmu", url: "https://en.wikipedia.org/wiki/Chami_Murmu" },
   },
   {
-    title: "पुणे की ट्री मैपिंग: हर पेड़ का रिकॉर्ड",
-    location: "पुणे, महाराष्ट्र",
+    title: "Citizen tree mapping: records that protect",
+    location: "Pune, Maharashtra",
     image:
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80",
-    body: "नागरिक समूह पेड़ों को जियो-टैग कर रहे हैं ताकि प्रजाति, सेहत, पानी और देखभाल की जिम्मेदारी दर्ज हो सके। यह शहरों के लिए नागरिक विज्ञान की मजबूत दिशा है।",
+    body: "Citizen groups that document and geotag trees show how public records can support conservation, monitoring, and local accountability.",
     source: {
       label: "Times of India: Pune tree geotagging",
       url: "https://timesofindia.indiatimes.com/city/pune/citizens-take-geotagging-of-punes-green-cover-into-their-own-hands/articleshow/122800619.cms",
@@ -46,11 +46,11 @@ const stories = [
 export const Route = createFileRoute("/stories")({
   head: () => ({
     meta: [
-      { title: "सच्ची प्रेरक कहानियां | Prakriti Sewa" },
+      { title: "Green Stories | Vriksh Rakshak Dal Sewa Trust" },
       {
         name: "description",
         content:
-          "भारत की वास्तविक हरित कहानियां पढ़ें: मोलाई वन, पिपलांत्री, चामी मुर्मू और नागरिक ट्री मैपिंग से प्रेरणा लें।",
+          "Source-linked green stories from India that inspire tree plantation, protection, and community participation.",
       },
       { property: "og:url", content: absoluteUrl("/stories") },
     ],
@@ -59,9 +59,9 @@ export const Route = createFileRoute("/stories")({
   component: () => (
     <>
       <PageHero
-        eyebrow="कहानियां"
-        title={<>सच्चे लोग। सच्चे पेड़। सच्ची उम्मीद।</>}
-        sub="इन कहानियों को सार्वजनिक स्रोतों से समझकर, संक्षेपित करके और स्रोत-लिंक के साथ प्रस्तुत किया गया है।"
+        eyebrow="Stories"
+        title={<>Real people. Real trees. Real hope.</>}
+        sub="Source-linked stories that show what patient environmental action can make possible."
       />
       <section className="py-16 sm:py-24">
         <Container>
@@ -73,9 +73,11 @@ export const Route = createFileRoute("/stories")({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6 }}
-                className={`grid gap-8 md:grid-cols-2 md:items-center ${i % 2 ? "md:[&>figure]:order-2" : ""}`}
+                className={`grid gap-8 md:grid-cols-2 md:items-center ${
+                  i % 2 ? "md:[&>figure]:order-2" : ""
+                }`}
               >
-                <figure className="overflow-hidden rounded-[2rem] shadow-lift">
+                <figure className="overflow-hidden rounded-lg shadow-lift">
                   <img
                     src={s.image}
                     alt={s.title}
@@ -99,7 +101,7 @@ export const Route = createFileRoute("/stories")({
                     rel="noreferrer"
                     className="mt-5 inline-flex items-center gap-1 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-accent"
                   >
-                    स्रोत देखें
+                    View source
                     <ExternalLink className="size-4" aria-hidden="true" />
                   </a>
                 </div>

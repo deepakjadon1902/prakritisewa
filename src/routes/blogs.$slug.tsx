@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, ExternalLink, Share2 } from "lucide-react";
 import { Container } from "../components/layout/Container";
-import { absoluteUrl } from "../constants/site";
+import { SITE_NAME, absoluteUrl } from "../constants/site";
 import { getPostBySlug, getRelatedPosts } from "../data/blog";
 
 export const Route = createFileRoute("/blogs/$slug")({
@@ -21,14 +21,14 @@ export const Route = createFileRoute("/blogs/$slug")({
       image: post.image,
       datePublished: post.date,
       author: { "@type": "Organization", name: post.author },
-      publisher: { "@type": "Organization", name: "Prakriti Sewa", url: absoluteUrl("/") },
+      publisher: { "@type": "Organization", name: SITE_NAME, url: absoluteUrl("/") },
       mainEntityOfPage: url,
       citation: post.sources.map((source) => source.url),
     };
 
     return {
       meta: [
-        { title: `${post.title} | Prakriti Sewa Blog` },
+        { title: `${post.title} | ${SITE_NAME} Resources` },
         { name: "description", content: post.excerpt.slice(0, 158) },
         { name: "robots", content: "index, follow" },
         { property: "og:type", content: "article" },
@@ -61,7 +61,7 @@ function BlogPostPage() {
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold shadow-soft"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
-              ब्लॉग पर वापस जाएं
+              Back to resources
             </Link>
             <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_0.62fr] lg:items-end">
               <div>
@@ -74,7 +74,7 @@ function BlogPostPage() {
                 <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{post.excerpt}</p>
                 <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                   <span>{post.date}</span>
-                  <span>लेख: {post.author}</span>
+                  <span>Author: {post.author}</span>
                   <span className="inline-flex items-center gap-1">
                     <Clock className="size-4" aria-hidden="true" />
                     {post.readingTime}
@@ -103,10 +103,10 @@ function BlogPostPage() {
               loading="eager"
               decoding="async"
               referrerPolicy="no-referrer"
-              className="max-h-[560px] w-full rounded-[2rem] object-cover shadow-lift"
+              className="max-h-[560px] w-full rounded-lg object-cover shadow-lift"
             />
             <figcaption className="mt-3 text-xs text-muted-foreground">
-              चित्र स्रोत:{" "}
+              Image source:{" "}
               <a href={post.imageCredit.url} target="_blank" rel="noreferrer" className="underline">
                 {post.imageCredit.label}
               </a>
@@ -118,8 +118,8 @@ function BlogPostPage() {
               <p key={paragraph}>{paragraph}</p>
             ))}
 
-            <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
-              <p className="font-semibold">स्रोत और संदर्भ</p>
+            <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
+              <p className="font-semibold">Sources and references</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {post.sources.map((source) => (
                   <a
@@ -136,14 +136,14 @@ function BlogPostPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
               <div className="flex items-center gap-3">
                 <Share2 className="size-5 text-[color:var(--forest)]" aria-hidden="true" />
-                <p className="font-semibold">यह लेख साझा करें</p>
+                <p className="font-semibold">Share this article</p>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
-                अपने परिवार, स्कूल, कार्यालय या मोहल्ले को प्रकृति सेवा के साथ पेड़ बचाने के लिए
-                प्रेरित करें।
+                Share these stories with family, schools, institutions, and communities to inspire
+                tree protection and public participation.
               </p>
             </div>
           </div>
@@ -152,14 +152,14 @@ function BlogPostPage() {
 
       <section className="py-20">
         <Container>
-          <h2 className="font-display text-3xl font-semibold">संबंधित लेख</h2>
+          <h2 className="font-display text-3xl font-semibold">Related articles</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {related.map((item) => (
               <Link
                 key={item.slug}
                 to="/blogs/$slug"
                 params={{ slug: item.slug }}
-                className="rounded-3xl border border-border bg-card p-5 shadow-soft transition-transform hover:-translate-y-1"
+                className="rounded-lg border border-border bg-card p-5 shadow-soft"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
                   {item.category}

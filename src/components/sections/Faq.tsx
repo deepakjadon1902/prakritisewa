@@ -15,9 +15,9 @@ export function Faq({ limit }: { limit?: number }) {
         <SectionHeader
           eyebrow="FAQs"
           title="Questions people ask us the most."
-          sub="Can't find your answer? Write to us — we reply within two working days."
+          sub="Can't find your answer? Write to us. We reply within two working days."
         />
-        <div className="mt-10 divide-y divide-border rounded-3xl border border-border bg-card shadow-soft">
+        <div className="mt-10 divide-y divide-border rounded-lg border border-border bg-card shadow-soft">
           {list.map((f, i) => {
             const isOpen = open === i;
             return (

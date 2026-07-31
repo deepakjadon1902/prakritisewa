@@ -1,58 +1,34 @@
-import { motion } from "motion/react";
-import { Quote } from "lucide-react";
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 
-const quotes = [
-  {
-    quote:
-      "They saved a 90-year-old peepal tree that had watched my grandmother grow up. Watching it come back to life was the most emotional day of my year.",
-    name: "Ananya Mehta",
-    role: "Resident, Pune",
-  },
-  {
-    quote:
-      "I joined as a weekend volunteer. Six months in, I know the name of every species on my street. This movement changes how you see your city.",
-    name: "Rahul Verma",
-    role: "Volunteer, Delhi",
-  },
-  {
-    quote:
-      "Their process is scientific and their heart is enormous. Rare combination. I recommend every corporate to fund even one relocation.",
-    name: "Dr. Kavita Rao",
-    role: "Environmentalist",
-  },
+const points = [
+  "Dedicated environmental organization",
+  "Local community-based work",
+  "Focus on long-term tree survival",
+  "Transparent charitable activities",
+  "Volunteer-driven green initiatives",
+  "Legally established Public Charitable Trust",
 ];
 
 export function Testimonials() {
   return (
-    <section className="bg-secondary/50 py-24 sm:py-28">
+    <section className="bg-secondary/45 py-20 sm:py-24">
       <Container>
-        <SectionHeader
-          eyebrow="Voices"
-          title="What our community says."
-          sub="Citizens, volunteers, and environmentalists — all rooting for the same thing."
-        />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {quotes.map((q, i) => (
-            <motion.figure
-              key={q.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="rounded-3xl border border-border bg-card p-7 shadow-soft"
-            >
-              <Quote className="size-6 text-[color:var(--leaf)]" aria-hidden="true" />
-              <blockquote className="mt-4 text-base leading-relaxed text-foreground/85">
-                “{q.quote}”
-              </blockquote>
-              <figcaption className="mt-6">
-                <p className="font-semibold">{q.name}</p>
-                <p className="text-sm text-muted-foreground">{q.role}</p>
-              </figcaption>
-            </motion.figure>
-          ))}
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <SectionHeader
+            align="left"
+            eyebrow="Why Choose Us"
+            title="A legally established trust with a practical green mission."
+            sub="The work is local, transparent, and focused on protecting trees after plantation."
+          />
+          <ul className="divide-y divide-border border-y border-border">
+            {points.map((point) => (
+              <li key={point} className="flex gap-4 py-5 text-base font-semibold leading-7">
+                <span className="mt-3 h-px w-8 shrink-0 bg-[color:var(--forest)]" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </section>

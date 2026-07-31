@@ -14,8 +14,11 @@ import { LanguageProvider } from "../context/language";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { InstallPrompt } from "../components/common/InstallPrompt";
+import heroImage from "../assets/hero-tree-optimized.jpg";
 import {
+  APP_ICON_512,
   SITE_DESCRIPTION,
+  SITE_HINDI_NAME,
   SITE_NAME,
   SITE_TITLE,
   absoluteUrl,
@@ -87,17 +90,18 @@ const ORG_JSONLD = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: SITE_NAME,
-  alternateName: "प्रकृति सेवा",
+  alternateName: SITE_HINDI_NAME,
   url: absoluteUrl("/"),
-  logo: absoluteUrl("/favicon.svg"),
-  description:
-    "A selfless social movement to save endangered trees, protect existing trees, relocate unhealthy trees, plant native species, and preserve Mother Nature.",
-  sameAs: [
-    "https://instagram.com/",
-    "https://facebook.com/",
-    "https://twitter.com/",
-    "https://youtube.com/",
-  ],
+  logo: absoluteUrl(APP_ICON_512),
+  image: defaultOgImage,
+  description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vrindavan",
+    addressRegion: "Uttar Pradesh",
+    addressCountry: "IN",
+  },
+  sameAs: ["https://www.facebook.com/ganesh.baghel.583"],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -117,7 +121,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:url", content: absoluteUrl("/") },
       { property: "og:image", content: defaultOgImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@prakritisewa" },
       { name: "twitter:title", content: SITE_TITLE },
       { name: "twitter:description", content: SITE_DESCRIPTION },
       { name: "twitter:image", content: defaultOgImage },
@@ -126,14 +129,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: absoluteUrl("/") },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.svg" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap",
-      },
+      { rel: "preload", as: "image", href: heroImage, fetchPriority: "high" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
     ],
     scripts: [
       {
@@ -150,11 +148,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="min-h-dvh bg-[color:var(--forest)]">
         {children}
         <Scripts />
       </body>
@@ -167,6 +165,22 @@ function RootComponent() {
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
+
+    if (!import.meta.env.PROD) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => {
+          void registration.unregister();
+        });
+      });
+      if ("caches" in window) {
+        caches.keys().then((keys) => {
+          keys.forEach((key) => {
+            void caches.delete(key);
+          });
+        });
+      }
+      return;
+    }
 
     const registerServiceWorker = () => {
       navigator.serviceWorker
@@ -191,18 +205,20 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[color:var(--forest)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main">
-          <Outlet />
-        </main>
-        <Footer />
-        <InstallPrompt />
+        <div className="flex min-h-dvh flex-col bg-background">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[color:var(--forest)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
+          <Header />
+          <main id="main" className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+          <InstallPrompt />
+        </div>
       </LanguageProvider>
     </QueryClientProvider>
   );

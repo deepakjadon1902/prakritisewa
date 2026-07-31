@@ -4,6 +4,7 @@ import { z } from "zod";
 import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
+import { openTrustWhatsApp } from "../lib/whatsapp";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -47,6 +48,20 @@ function VolunteerPage() {
       return;
     }
     setErrors({});
+    const data = parsed.data;
+    openTrustWhatsApp([
+      "Volunteer Application - Vriksh Rakshak Dal Sewa Trust",
+      "",
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `City: ${data.city}`,
+      `Occupation: ${data.occupation || "Not provided"}`,
+      `Availability: ${data.availability}`,
+      `Area of interest: ${data.interest}`,
+      "",
+      `Why I want to join: ${data.why}`,
+    ]);
     setSubmitted(true);
     e.currentTarget.reset();
   };
@@ -68,7 +83,8 @@ function VolunteerPage() {
               />
               <h2 className="mt-4 font-display text-2xl font-semibold">Thank you for joining.</h2>
               <p className="mt-2 text-muted-foreground">
-                The Trust will review your details and contact you about upcoming campaigns.
+                WhatsApp has opened with your application details. Please send the message there to
+                complete your volunteer request.
               </p>
               <button
                 type="button"

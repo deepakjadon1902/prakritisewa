@@ -10,6 +10,8 @@ export const SITE_DESCRIPTION =
   "Vriksh Rakshak Dal Sewa Trust is a registered Public Charitable Trust dedicated to tree plantation, tree protection, environmental conservation, and social welfare activities in Vrindavan, Mathura, and the Braj region.";
 export const TRUST_PAN = "AAETV7094D";
 export const TRUST_EMAIL = "vrikshrakshakdal@gmail.com";
+export const TRUST_PHONE = "+91 84306 04625";
+export const TRUST_PHONE_E164 = "918430604625";
 export const TRUST_LOCATION = "Vrindavan, Mathura, Uttar Pradesh, India";
 export const FACEBOOK_PROFILE = "https://www.facebook.com/ganesh.baghel.583";
 export const LOGO_IMAGE = "/vriksh-rakshak-logo.jpeg";

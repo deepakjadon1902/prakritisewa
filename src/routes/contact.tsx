@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { CheckCircle2, Facebook, Mail, MapPin, UserRound } from "lucide-react";
+import { CheckCircle2, Facebook, Mail, MapPin, Phone, UserRound } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
 import {
@@ -10,11 +10,15 @@ import {
   SITE_NAME,
   TRUST_EMAIL,
   TRUST_LOCATION,
+  TRUST_PHONE,
+  TRUST_PHONE_E164,
 } from "../constants/site";
+import { openTrustWhatsApp } from "../lib/whatsapp";
 
 const schema = z.object({
   name: z.string().trim().min(2).max(80),
   email: z.string().trim().email().max(255),
+  phone: z.string().trim().min(7).max(20),
   subject: z.string().trim().min(3).max(120),
   message: z.string().trim().min(10).max(1000),
 });
@@ -49,6 +53,17 @@ function ContactPage() {
       return;
     }
     setErrors({});
+    const data = parsed.data;
+    openTrustWhatsApp([
+      "Contact Request - Vriksh Rakshak Dal Sewa Trust",
+      "",
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `Subject: ${data.subject}`,
+      "",
+      `Message: ${data.message}`,
+    ]);
     setOk(true);
     e.currentTarget.reset();
   };
@@ -71,6 +86,18 @@ function ContactPage() {
                   title="Email"
                   value={TRUST_EMAIL}
                   href={`mailto:${TRUST_EMAIL}`}
+                />
+                <InfoRow
+                  icon={Phone}
+                  title="Help Number"
+                  value={TRUST_PHONE}
+                  href={`tel:+${TRUST_PHONE_E164}`}
+                />
+                <InfoRow
+                  icon={Phone}
+                  title="WhatsApp"
+                  value={TRUST_PHONE}
+                  href={`https://wa.me/${TRUST_PHONE_E164}`}
                 />
                 <InfoRow icon={MapPin} title="Location" value={TRUST_LOCATION} />
                 <InfoRow
@@ -106,7 +133,10 @@ function ContactPage() {
                     aria-hidden="true"
                   />
                   <h2 className="mt-4 font-display text-2xl font-semibold">Message received.</h2>
-                  <p className="mt-2 text-muted-foreground">We will get back to you shortly.</p>
+                  <p className="mt-2 text-muted-foreground">
+                    WhatsApp has opened with your message details. Please send the message there to
+                    complete your request.
+                  </p>
                   <button
                     type="button"
                     onClick={() => setOk(false)}
@@ -125,6 +155,7 @@ function ContactPage() {
                     error={errors.email}
                     required
                   />
+                  <TextField name="phone" type="tel" label="Phone" error={errors.phone} required />
                   <TextField name="subject" label="Subject" error={errors.subject} required />
                   <div>
                     <label htmlFor="message" className="mb-1.5 block text-sm font-semibold">

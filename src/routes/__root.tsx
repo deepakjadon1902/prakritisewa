@@ -21,6 +21,8 @@ import {
   SITE_HINDI_NAME,
   SITE_NAME,
   SITE_TITLE,
+  TRUST_EMAIL,
+  TRUST_PHONE,
   absoluteUrl,
   defaultOgImage,
 } from "../constants/site";
@@ -95,6 +97,8 @@ const ORG_JSONLD = {
   logo: absoluteUrl(APP_ICON_512),
   image: defaultOgImage,
   description: SITE_DESCRIPTION,
+  email: TRUST_EMAIL,
+  telephone: TRUST_PHONE,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Vrindavan",

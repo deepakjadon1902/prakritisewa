@@ -13,6 +13,7 @@ const nav = [
   { to: "/impact", key: "nav_impact" },
   { to: "/gallery", key: "nav_gallery" },
   { to: "/blogs", key: "nav_blog" },
+  { to: "/donate", key: "cta_donate" },
   { to: "/contact", key: "nav_contact" },
 ] as const;
 

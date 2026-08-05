@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Mail, Users } from "lucide-react";
+import { ArrowRight, HeartHandshake, Users } from "lucide-react";
 import { Container } from "../layout/Container";
 import volunteers from "../../assets/volunteers-planting.jpg";
 
@@ -29,11 +29,11 @@ export function DonateCta() {
               Become a Volunteer
             </Link>
             <Link
-              to="/contact"
+              to="/donate"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
-              <Mail className="size-4" aria-hidden="true" />
-              Contact Us
+              <HeartHandshake className="size-4" aria-hidden="true" />
+              Support the Trust
             </Link>
           </div>
         </div>

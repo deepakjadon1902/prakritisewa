@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Instagram, Facebook, MapPin } from "lucide-react";
+import { Mail, Instagram, Facebook, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "../../context/language";
 import {
   APP_ICON_192,
@@ -8,6 +8,8 @@ import {
   SITE_NAME,
   TRUST_EMAIL,
   TRUST_LOCATION,
+  TRUST_PHONE,
+  TRUST_PHONE_E164,
 } from "../../constants/site";
 import { Container } from "./Container";
 
@@ -81,6 +83,13 @@ export function Footer() {
           >
             <Mail className="size-4" aria-hidden="true" />
             {TRUST_EMAIL}
+          </a>
+          <a
+            href={`tel:+${TRUST_PHONE_E164}`}
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            <Phone className="size-4" aria-hidden="true" />
+            {TRUST_PHONE}
           </a>
         </div>
       </Container>

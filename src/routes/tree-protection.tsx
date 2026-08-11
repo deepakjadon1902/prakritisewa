@@ -3,6 +3,7 @@ import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { DonateCta } from "../components/sections/CtaBanners";
+import { absoluteUrl } from "../constants/site";
 
 const pillars = [
   {
@@ -32,9 +33,9 @@ export const Route = createFileRoute("/tree-protection")({
         content:
           "Tree protection, sapling care, watering, monitoring, and public awareness by Vriksh Rakshak Dal Sewa Trust.",
       },
-      { property: "og:url", content: "/tree-protection" },
+      { property: "og:url", content: absoluteUrl("/tree-protection") },
     ],
-    links: [{ rel: "canonical", href: "/tree-protection" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/tree-protection") }],
   }),
   component: () => (
     <>

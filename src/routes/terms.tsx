@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
-import { SITE_NAME } from "../constants/site";
+import { SITE_NAME, absoluteUrl } from "../constants/site";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -11,9 +11,9 @@ export const Route = createFileRoute("/terms")({
         name: "description",
         content: `Terms governing use of the ${SITE_NAME} website and volunteer participation.`,
       },
-      { property: "og:url", content: "/terms" },
+      { property: "og:url", content: absoluteUrl("/terms") },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/terms") }],
   }),
   component: () => (
     <>

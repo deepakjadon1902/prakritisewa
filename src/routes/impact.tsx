@@ -3,6 +3,7 @@ import { PageHero } from "../components/ui/PageHero";
 import { ImpactCounter } from "../components/sections/ImpactCounter";
 import { Container } from "../components/layout/Container";
 import { SectionHeader } from "../components/ui/SectionHeader";
+import { absoluteUrl } from "../constants/site";
 
 const objectives = [
   "Tree Plantation",
@@ -23,9 +24,9 @@ export const Route = createFileRoute("/impact")({
         content:
           "Vriksh Rakshak Dal Sewa Trust conducts ongoing tree plantation and conservation activities across Vrindavan and nearby areas.",
       },
-      { property: "og:url", content: "/impact" },
+      { property: "og:url", content: absoluteUrl("/impact") },
     ],
-    links: [{ rel: "canonical", href: "/impact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/impact") }],
   }),
   component: ImpactPage,
 });

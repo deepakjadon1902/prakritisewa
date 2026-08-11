@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ExternalLink } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
 import { absoluteUrl } from "../constants/site";
@@ -23,40 +22,32 @@ export const Route = createFileRoute("/gallery")({
     <>
       <PageHero
         eyebrow="Gallery"
-        title={<>A visual reminder of our responsibility.</>}
-        sub="Trees, saplings, forests, and community action connected to the Trust's green mission."
+        title={<>Tree rescue work from wall, roadside, and waste spaces.</>}
+        sub="Real campaign visuals from Vriksh Rakshak Dal field work, arranged in the same order as the supplied photos."
       />
       <section className="py-16 sm:py-24">
         <Container>
           <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-            {sourcedImages.concat(sourcedImages.slice(0, 2)).map((img, i) => (
+            {sourcedImages.map((img, i) => (
               <motion.figure
-                key={`${img.src}-${i}`}
+                key={img.src}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: (i % 6) * 0.04 }}
-                className="mb-4 overflow-hidden rounded-lg bg-card shadow-soft break-inside-avoid"
+                className="mb-4 overflow-hidden rounded-lg border border-border bg-card shadow-soft break-inside-avoid"
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
                   decoding="async"
-                  referrerPolicy="no-referrer"
-                  className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                  width={img.width}
+                  height={img.height}
+                  className="h-auto w-full bg-muted object-contain"
                 />
-                <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-xs text-muted-foreground">
+                <figcaption className="px-4 py-3 text-xs font-medium text-muted-foreground">
                   <span>{img.credit}</span>
-                  <a
-                    href={img.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold text-[color:var(--forest)]"
-                  >
-                    Source
-                    <ExternalLink className="size-3" aria-hidden="true" />
-                  </a>
                 </figcaption>
               </motion.figure>
             ))}

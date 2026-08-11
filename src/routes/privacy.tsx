@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
-import { SITE_NAME, TRUST_EMAIL } from "../constants/site";
+import { SITE_NAME, TRUST_EMAIL, absoluteUrl } from "../constants/site";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -11,9 +11,9 @@ export const Route = createFileRoute("/privacy")({
         name: "description",
         content: `How ${SITE_NAME} collects, uses, and protects your personal information.`,
       },
-      { property: "og:url", content: "/privacy" },
+      { property: "og:url", content: absoluteUrl("/privacy") },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/privacy") }],
   }),
   component: () => (
     <>

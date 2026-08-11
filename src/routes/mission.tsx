@@ -6,7 +6,7 @@ import { Process } from "../components/sections/Process";
 import { DonateCta } from "../components/sections/CtaBanners";
 import { Container } from "../components/layout/Container";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { SITE_HINDI_NAME, TRUST_PAN } from "../constants/site";
+import { SITE_HINDI_NAME, TRUST_PAN, absoluteUrl } from "../constants/site";
 
 const mission = [
   "To protect nature through tree plantation and conservation.",
@@ -33,9 +33,9 @@ export const Route = createFileRoute("/mission")({
           "Learn about the mission, vision, legal status, trustees, and objectives of Vriksh Rakshak Dal Sewa Trust.",
       },
       { property: "og:title", content: "Mission - Vriksh Rakshak Dal Sewa Trust" },
-      { property: "og:url", content: "/mission" },
+      { property: "og:url", content: absoluteUrl("/mission") },
     ],
-    links: [{ rel: "canonical", href: "/mission" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/mission") }],
   }),
   component: MissionPage,
 });

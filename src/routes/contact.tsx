@@ -12,6 +12,7 @@ import {
   TRUST_LOCATION,
   TRUST_PHONE,
   TRUST_PHONE_E164,
+  absoluteUrl,
 } from "../constants/site";
 import { openTrustWhatsApp } from "../lib/whatsapp";
 
@@ -32,9 +33,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contact Vriksh Rakshak Dal Sewa Trust in Vrindavan, Mathura for tree plantation, volunteering, public awareness, and green collaborations.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: absoluteUrl("/contact") },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
   }),
   component: ContactPage,
 });

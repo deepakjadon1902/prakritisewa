@@ -3,6 +3,7 @@ import { PageHero } from "../components/ui/PageHero";
 import { Process } from "../components/sections/Process";
 import { DonateCta } from "../components/sections/CtaBanners";
 import { Container } from "../components/layout/Container";
+import { absoluteUrl } from "../constants/site";
 import relocImg from "../assets/tree-relocation.jpg";
 
 export const Route = createFileRoute("/tree-relocation")({
@@ -14,9 +15,9 @@ export const Route = createFileRoute("/tree-relocation")({
         content:
           "Tree care, monitoring, watering, protection, and maintenance of planted saplings by Vriksh Rakshak Dal Sewa Trust.",
       },
-      { property: "og:url", content: "/tree-relocation" },
+      { property: "og:url", content: absoluteUrl("/tree-relocation") },
     ],
-    links: [{ rel: "canonical", href: "/tree-relocation" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/tree-relocation") }],
   }),
   component: () => (
     <>

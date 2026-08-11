@@ -4,6 +4,7 @@ import { z } from "zod";
 import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "../components/ui/PageHero";
 import { Container } from "../components/layout/Container";
+import { absoluteUrl } from "../constants/site";
 import { openTrustWhatsApp } from "../lib/whatsapp";
 
 const schema = z.object({
@@ -26,9 +27,9 @@ export const Route = createFileRoute("/volunteer")({
         content:
           "Become a volunteer for tree plantation, tree protection, environmental awareness, and green initiatives in Vrindavan and Braj region.",
       },
-      { property: "og:url", content: "/volunteer" },
+      { property: "og:url", content: absoluteUrl("/volunteer") },
     ],
-    links: [{ rel: "canonical", href: "/volunteer" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/volunteer") }],
   }),
   component: VolunteerPage,
 });

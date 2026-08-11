@@ -3,6 +3,7 @@ import { PageHero } from "../components/ui/PageHero";
 import { WhyTrees } from "../components/sections/WhyTrees";
 import { VolunteerCta } from "../components/sections/CtaBanners";
 import { OurWork } from "../components/sections/OurWork";
+import { absoluteUrl } from "../constants/site";
 
 export const Route = createFileRoute("/tree-plantation")({
   head: () => ({
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/tree-plantation")({
         content:
           "Tree plantation campaigns in public places, schools, temples, ashrams, and community areas across Vrindavan and the Braj region.",
       },
-      { property: "og:url", content: "/tree-plantation" },
+      { property: "og:url", content: absoluteUrl("/tree-plantation") },
     ],
-    links: [{ rel: "canonical", href: "/tree-plantation" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/tree-plantation") }],
   }),
   component: () => (
     <>

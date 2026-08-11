@@ -36,27 +36,32 @@ const supportWays = [
 ];
 
 const donationAmounts = [
-  { amount: "₹501", label: "Sapling care", desc: "Support watering and early-stage maintenance." },
+  { amount: "501", label: "Sapling care", desc: "Support watering and early-stage maintenance." },
   {
-    amount: "₹1,100",
+    amount: "1,100",
     label: "Plantation drive",
     desc: "Contribute toward saplings and campaign logistics.",
   },
-  { amount: "₹5,100", label: "Tree protection", desc: "Help protect and monitor existing trees." },
+  { amount: "5,100", label: "Tree protection", desc: "Help protect and monitor existing trees." },
 ];
 
+const upiId = "vrikshrakshakdal@ibl";
+const upiName = "Vriksh Rakshak Dal Sewa Trust";
+const upiPayUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(
+  upiName,
+)}&cu=INR`;
 const donationMessage = [
-  `Donation Support - ${SITE_NAME}`,
+  `Donation Confirmation - ${SITE_NAME}`,
   "",
-  "I want to support the Trust's tree plantation and protection work.",
-  "Please share official donation/payment details.",
+  `I donated to UPI ID: ${upiId}`,
+  "Please confirm my donation for the Trust's tree plantation and protection work.",
 ].join("\n");
 
 const donationChatUrl = `https://wa.me/${TRUST_PHONE_E164}?text=${encodeURIComponent(
   donationMessage,
 )}`;
 const donationQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=18&data=${encodeURIComponent(
-  donationChatUrl,
+  upiPayUrl,
 )}`;
 
 export const Route = createFileRoute("/donate")({
@@ -103,29 +108,36 @@ function DonatePage() {
                   </div>
                 </div>
                 <p className="mt-5 leading-7 text-muted-foreground">
-                  Scan the QR code or use the buttons below to request verified donation details
-                  from {SITE_NAME}. Please confirm official payment details before transferring any
-                  amount.
+                  Scan the QR code or pay directly to the official UPI ID below. After payment,
+                  share the transaction screenshot with the Trust team for confirmation.
                 </p>
 
+                <div className="mt-6 rounded-lg border border-[color:var(--forest)]/25 bg-secondary p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
+                    Official UPI ID
+                  </p>
+                  <p className="mt-2 break-all font-display text-2xl font-semibold text-foreground">
+                    {upiId}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{upiName}</p>
+                </div>
+
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  <a
+                    href={upiPayUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+                  >
+                    <IndianRupee className="size-4" aria-hidden="true" />
+                    Pay with UPI
+                  </a>
                   <a
                     href={donationChatUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--forest)] px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
-                  >
-                    <MessageCircle className="size-4" aria-hidden="true" />
-                    Ask on WhatsApp
-                  </a>
-                  <a
-                    href={`mailto:${TRUST_EMAIL}?subject=${encodeURIComponent(
-                      `Donation support for ${SITE_NAME}`,
-                    )}`}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold hover:bg-accent"
                   >
-                    <Mail className="size-4" aria-hidden="true" />
-                    Email donation desk
+                    <MessageCircle className="size-4" aria-hidden="true" />
+                    Send confirmation
                   </a>
                 </div>
 
@@ -155,9 +167,7 @@ function DonatePage() {
                   >
                     <div className="flex items-center gap-2 text-[color:var(--forest)]">
                       <IndianRupee className="size-4" aria-hidden="true" />
-                      <p className="font-display text-2xl font-semibold">
-                        {item.amount.replace("₹", "")}
-                      </p>
+                      <p className="font-display text-2xl font-semibold">{item.amount}</p>
                     </div>
                     <h3 className="mt-3 font-semibold">{item.label}</h3>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.desc}</p>
@@ -170,25 +180,22 @@ function DonatePage() {
               <div className="mx-auto grid size-14 place-items-center rounded-full bg-secondary text-[color:var(--forest)]">
                 <QrCode className="size-7" aria-hidden="true" />
               </div>
-              <h2 className="mt-4 font-display text-2xl font-semibold">
-                Scan QR for donation support
-              </h2>
+              <h2 className="mt-4 font-display text-2xl font-semibold">Scan QR to donate by UPI</h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Opens a pre-filled WhatsApp message to request official payment details.
+                Opens UPI payment to {upiId}. Enter any amount you wish to contribute.
               </p>
               <div className="mx-auto mt-6 max-w-[280px] rounded-xl border border-border bg-white p-4 shadow-soft">
                 <img
                   src={donationQrUrl}
-                  alt="QR code to contact Vriksh Rakshak Dal Sewa Trust for donation support"
+                  alt={`UPI QR code for ${upiId}`}
                   width={280}
                   height={280}
                   loading="lazy"
                   className="aspect-square w-full rounded-lg"
                 />
               </div>
-              <p className="mt-4 rounded-lg bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-900">
-                Official UPI or bank QR can be added here once the Trust shares verified payment
-                details.
+              <p className="mt-4 break-all rounded-lg bg-secondary px-4 py-3 text-sm font-semibold text-[color:var(--forest)]">
+                {upiId}
               </p>
             </aside>
           </div>
@@ -224,7 +231,7 @@ function DonatePage() {
                   <span className="text-sm font-semibold">Safe donation process</span>
                 </div>
                 <h2 className="mt-3 font-display text-2xl font-semibold">
-                  Confirm details, donate, then share confirmation.
+                  Donate by UPI, then share confirmation.
                 </h2>
                 <p className="mt-3 max-w-2xl text-white/82">
                   After donation, send the transaction screenshot/details to the Trust so the team

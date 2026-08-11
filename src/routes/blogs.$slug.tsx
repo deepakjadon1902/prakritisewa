@@ -11,6 +11,15 @@ export const Route = createFileRoute("/blogs/$slug")({
     return { post, related: getRelatedPosts(post) };
   },
   head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [
+          { title: `Resource Not Found | ${SITE_NAME}` },
+          { name: "robots", content: "noindex, follow" },
+        ],
+      };
+    }
+
     const { post } = loaderData;
     const url = absoluteUrl(`/blogs/${post.slug}`);
     const articleJsonLd = {

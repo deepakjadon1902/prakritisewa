@@ -13,8 +13,8 @@ export function GalleryPreview() {
           <SectionHeader
             align="left"
             eyebrow="Gallery"
-            title="Visual inspiration for tree protection."
-            sub="A source-linked gallery of trees, saplings, forests, and green community action."
+            title="Tree rescue work, shown clearly."
+            sub="Field photos from wall rescue, roadside rescue, and replanting campaigns."
           />
           <Link
             to="/gallery"
@@ -28,7 +28,7 @@ export function GalleryPreview() {
           </Link>
         </div>
 
-        <div className="mt-10 grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {sourcedImages.slice(0, 5).map((t, i) => (
             <motion.figure
               key={t.src}
@@ -36,17 +36,18 @@ export function GalleryPreview() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className={`group relative overflow-hidden rounded-lg shadow-soft ${t.span}`}
+              className="group relative overflow-hidden rounded-lg border border-border bg-card shadow-soft"
             >
               <img
                 src={t.src}
                 alt={t.alt}
                 loading="lazy"
                 decoding="async"
-                referrerPolicy="no-referrer"
-                className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width={t.width}
+                height={t.height}
+                className="aspect-[9/16] w-full bg-muted object-contain"
               />
-              <figcaption className="absolute inset-x-3 bottom-3 rounded-xl bg-black/55 px-3 py-2 text-xs text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
+              <figcaption className="absolute inset-x-2 bottom-2 rounded-md bg-black/65 px-2.5 py-2 text-[11px] font-medium leading-4 text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
                 {t.credit}
               </figcaption>
             </motion.figure>

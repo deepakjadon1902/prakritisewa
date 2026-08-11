@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Instagram, Facebook, MapPin, Phone } from "lucide-react";
+import { Mail, Facebook, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "../../context/language";
 import {
   APP_ICON_192,
@@ -44,13 +44,6 @@ export function Footer() {
               className="grid size-10 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
             >
               <Facebook className="size-4" aria-hidden="true" />
-            </a>
-            <a
-              href="#"
-              aria-label="Instagram account"
-              className="grid size-10 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
-            >
-              <Instagram className="size-4" aria-hidden="true" />
             </a>
           </div>
         </div>

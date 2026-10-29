@@ -23,23 +23,11 @@ export function Hero() {
       void video.play().catch(() => {});
     };
 
-    const reloadVideo = () => {
-      video.load();
-      startPlayback();
-    };
-
     video.addEventListener("canplay", startPlayback);
     startPlayback();
 
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.addEventListener("controllerchange", reloadVideo);
-    }
-
     return () => {
       video.removeEventListener("canplay", startPlayback);
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.removeEventListener("controllerchange", reloadVideo);
-      }
     };
   }, []);
 

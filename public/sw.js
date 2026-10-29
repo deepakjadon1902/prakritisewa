@@ -1,10 +1,9 @@
-const VERSION = "vriksh-rakshak-v9";
+const VERSION = "vriksh-rakshak-v10";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const IMAGE_CACHE = `${VERSION}-images`;
 
 const APP_SHELL_URLS = [
-  "/",
   "/offline.html",
   "/manifest.json",
   "/vriksh-rakshak-logo.jpeg",
@@ -18,44 +17,19 @@ const APP_SHELL_URLS = [
   "/sitemap.xml",
 ];
 
-const APP_ROUTES = [
-  "/",
-  "/mission",
-  "/tree-protection",
-  "/tree-relocation",
-  "/tree-plantation",
-  "/impact",
-  "/stories",
-  "/gallery",
-  "/volunteer",
-  "/donate",
-  "/donation-confirmation",
-  "/blogs",
-  "/blogs/jadav-payeng-molai-forest",
-  "/blogs/piplantri-111-trees-for-every-daughter",
-  "/blogs/chami-murmu-jharkhand-green-leadership",
-  "/blogs/daripalli-ramaiah-seeds-in-pocket",
-  "/blogs/van-mahotsav-tree-festival-india",
-  "/blogs/pune-tree-mapping-citizen-science",
-  "/faq",
-  "/contact",
-  "/privacy",
-  "/terms",
-];
-
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(STATIC_CACHE)
-      .then((cache) =>
-        Promise.allSettled(
-          [...APP_SHELL_URLS, ...APP_ROUTES].map((url) =>
-            cache.add(new Request(url, { cache: "reload" })),
+    Promise.all([
+      caches
+        .open(STATIC_CACHE)
+        .then((cache) =>
+          Promise.allSettled(
+            APP_SHELL_URLS.map((url) => cache.add(new Request(url, { cache: "reload" }))),
           ),
         ),
-      ),
+      self.skipWaiting(),
+    ]),
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
@@ -71,9 +45,9 @@ self.addEventListener("activate", (event) => {
           ),
         ),
       self.registration.navigationPreload?.enable?.(),
+      self.clients.claim(),
     ]),
   );
-  self.clients.claim();
 });
 
 self.addEventListener("message", (event) => {
@@ -127,13 +101,13 @@ async function handleNavigation(event) {
 
   try {
     const preload = await event.preloadResponse;
-    if (preload) {
+    if (preload?.ok) {
       await putInCache(request, preload.clone(), STATIC_CACHE);
       return preload;
     }
 
-    const response = await fetch(request);
-    await putInCache(request, response.clone(), STATIC_CACHE);
+    const response = await fetch(new Request(request, { cache: "no-store" }));
+    if (response.ok) await putInCache(request, response.clone(), STATIC_CACHE);
     return response;
   } catch {
     return (
@@ -170,7 +144,7 @@ async function staleWhileRevalidate(request, cacheName) {
 }
 
 async function putInCache(request, response, cacheName) {
-  if (!response || response.status >= 500) return;
+  if (!response?.ok) return;
 
   const cache = await caches.open(cacheName);
   await cache.put(request, response);

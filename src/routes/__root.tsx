@@ -188,24 +188,47 @@ function RootComponent() {
       return;
     }
 
-    const registerServiceWorker = () => {
-      navigator.serviceWorker
-        .register("/sw.js", { scope: "/" })
-        .then((registration) => {
-          registration.waiting?.postMessage({ type: "SKIP_WAITING" });
-        })
-        .catch((error) => {
-          console.error("Service worker registration failed", error);
-        });
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    let reloadingForUpdate = false;
+    const reloadWhenUpdated = () => {
+      if (!hadController || reloadingForUpdate) return;
+      reloadingForUpdate = true;
+      window.location.reload();
     };
 
-    if (document.readyState === "complete") {
-      registerServiceWorker();
-      return;
-    }
+    navigator.serviceWorker.addEventListener("controllerchange", reloadWhenUpdated);
 
-    window.addEventListener("load", registerServiceWorker, { once: true });
-    return () => window.removeEventListener("load", registerServiceWorker);
+    const updateServiceWorker = async () => {
+      try {
+        const registration = await navigator.serviceWorker.register("/sw.js", {
+          scope: "/",
+          updateViaCache: "none",
+        });
+        const activateWaitingWorker = () => {
+          registration.waiting?.postMessage({ type: "SKIP_WAITING" });
+        };
+
+        registration.addEventListener("updatefound", () => {
+          const installingWorker = registration.installing;
+          installingWorker?.addEventListener("statechange", () => {
+            if (installingWorker.state === "installed" && navigator.serviceWorker.controller) {
+              installingWorker.postMessage({ type: "SKIP_WAITING" });
+            }
+          });
+        });
+
+        activateWaitingWorker();
+        await registration.update();
+        activateWaitingWorker();
+      } catch (error) {
+        console.error("Service worker registration failed", error);
+      }
+    };
+
+    void updateServiceWorker();
+    return () => {
+      navigator.serviceWorker.removeEventListener("controllerchange", reloadWhenUpdated);
+    };
   }, []);
 
   return (

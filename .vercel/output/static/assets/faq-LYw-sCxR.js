@@ -1,1 +1,0 @@
-import{r as e}from"./Container-h6xq-MdU.js";import{t}from"./Faq-Dnf48SOV.js";import{t as n}from"./PageHero-COkIJyML.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{eyebrow:`FAQs`,title:(0,r.jsx)(r.Fragment,{children:`Common questions, clear answers.`}),sub:`For anything else, contact the Trust directly.`}),(0,r.jsx)(t,{})]});export{i as component};

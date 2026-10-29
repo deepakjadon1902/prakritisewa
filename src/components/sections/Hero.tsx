@@ -15,33 +15,39 @@ export function Hero() {
   const heroWords =
     lang === "hi" ? ["प्रकृति", "भविष्य", "हरियाली"] : ["Trees", "Nature", "the Future"];
   useEffect(() => {
-    if (!("serviceWorker" in navigator)) return;
+    const video = heroVideoRef.current;
+    if (!video) return;
 
-    const reloadVideo = () => {
-      const video = heroVideoRef.current;
-      if (!video) return;
-
-      video.load();
+    const startPlayback = () => {
+      video.muted = true;
       void video.play().catch(() => {});
     };
 
-    navigator.serviceWorker.addEventListener("controllerchange", reloadVideo);
-    return () => navigator.serviceWorker.removeEventListener("controllerchange", reloadVideo);
+    const reloadVideo = () => {
+      video.load();
+      startPlayback();
+    };
+
+    video.addEventListener("canplay", startPlayback);
+    startPlayback();
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.addEventListener("controllerchange", reloadVideo);
+    }
+
+    return () => {
+      video.removeEventListener("canplay", startPlayback);
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.removeEventListener("controllerchange", reloadVideo);
+      }
+    };
   }, []);
 
   return (
     <section className="relative isolate overflow-hidden">
-      <img
-        src={heroImage}
-        alt="A healthy tree canopy representing environmental protection"
-        width={1440}
-        height={960}
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover"
-      />
       <video
         ref={heroVideoRef}
+        src="/hero-reel.mp4"
         autoPlay
         muted
         loop
@@ -50,13 +56,11 @@ export function Hero() {
         poster={heroImage}
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute inset-0 -z-10 size-full object-cover brightness-[1.32]"
-      >
-        <source src="/hero-reel.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-hero)]" />
+        className="absolute inset-0 z-0 size-full object-cover brightness-[1.32]"
+      />
+      <div className="absolute inset-0 z-10 bg-[image:var(--gradient-hero)]" />
 
-      <Container className="relative flex min-h-[76svh] flex-col justify-center py-20 text-white sm:min-h-[82svh] sm:py-24 md:min-h-[min(850px,88svh)] md:py-28">
+      <Container className="relative z-20 flex min-h-[76svh] flex-col justify-center py-20 text-white sm:min-h-[82svh] sm:py-24 md:min-h-[min(850px,88svh)] md:py-28">
         <motion.p
           initial={false}
           animate={{ opacity: 1, y: 0 }}

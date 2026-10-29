@@ -47,7 +47,7 @@ export function Hero() {
     <section className="relative isolate overflow-hidden">
       <video
         ref={heroVideoRef}
-        src="/hero-reel.mp4"
+        src="/hero%20section/hero.mp4"
         autoPlay
         muted
         loop

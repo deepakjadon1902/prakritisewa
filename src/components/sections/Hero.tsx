@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Mail } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { useLanguage } from "../../context/language";
 import { SITE_HINDI_NAME } from "../../constants/site";
 import { Container } from "../layout/Container";
@@ -10,8 +11,24 @@ import heroImage from "../../assets/hero-tree-optimized.jpg";
 
 export function Hero() {
   const { t, lang } = useLanguage();
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const heroWords =
     lang === "hi" ? ["प्रकृति", "भविष्य", "हरियाली"] : ["Trees", "Nature", "the Future"];
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+
+    const reloadVideo = () => {
+      const video = heroVideoRef.current;
+      if (!video) return;
+
+      video.load();
+      void video.play().catch(() => {});
+    };
+
+    navigator.serviceWorker.addEventListener("controllerchange", reloadVideo);
+    return () => navigator.serviceWorker.removeEventListener("controllerchange", reloadVideo);
+  }, []);
+
   return (
     <section className="relative isolate overflow-hidden">
       <img
@@ -24,6 +41,7 @@ export function Hero() {
         className="absolute inset-0 -z-10 size-full object-cover"
       />
       <video
+        ref={heroVideoRef}
         autoPlay
         muted
         loop
@@ -32,7 +50,7 @@ export function Hero() {
         poster={heroImage}
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute inset-0 -z-10 size-full object-cover brightness-[1.32] motion-reduce:hidden"
+        className="absolute inset-0 -z-10 size-full object-cover brightness-[1.32]"
       >
         <source src="/hero-reel.mp4" type="video/mp4" />
       </video>

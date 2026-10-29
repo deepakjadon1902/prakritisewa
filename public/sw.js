@@ -1,4 +1,4 @@
-const VERSION = "vriksh-rakshak-v7";
+const VERSION = "vriksh-rakshak-v8";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const IMAGE_CACHE = `${VERSION}-images`;
@@ -87,6 +87,16 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
 
   const url = new URL(request.url);
+
+  // Let the browser handle MP4 byte-range requests directly. Cache.put rejects
+  // partial (206) video responses, which otherwise leaves only the poster visible.
+  if (
+    url.origin === self.location.origin &&
+    (request.destination === "video" || request.headers.has("range"))
+  ) {
+    event.respondWith(fetch(request));
+    return;
+  }
 
   if (request.mode === "navigate") {
     event.respondWith(handleNavigation(event));

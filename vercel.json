@@ -1,15 +1,3 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/client",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/favicon.svg",
-      "destination": "/trust-mark.svg"
-    },
-    {
-      "source": "/apple-touch-icon.svg",
-      "destination": "/apple-touch-icon.png"
-    }
-  ]
+  "framework": "tanstack-start"
 }

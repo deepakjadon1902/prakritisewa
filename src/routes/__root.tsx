@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { MotionConfig } from "motion/react";
 
 import appCss from "../styles.css?url";
 import { LanguageProvider } from "../context/language";
@@ -16,7 +17,7 @@ import { Footer } from "../components/layout/Footer";
 import { InstallPrompt } from "../components/common/InstallPrompt";
 import heroImage from "../assets/hero-tree-optimized.jpg";
 import {
-  APP_ICON_512,
+  LOGO_IMAGE,
   SITE_DESCRIPTION,
   SITE_HINDI_NAME,
   SITE_NAME,
@@ -31,21 +32,23 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="font-display text-[8rem] leading-none text-gradient-forest">404</p>
+        <p className="font-display text-[clamp(5rem,24vw,8rem)] leading-none text-gradient-forest">
+          404
+        </p>
         <h1 className="mt-2 font-display text-2xl font-semibold">This trail ends here.</h1>
         <p className="mt-3 text-sm text-muted-foreground">
           The page you are looking for has been moved or never existed. Head back to the mission.
         </p>
-        <div className="mt-6 flex justify-center gap-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center rounded-full bg-[color:var(--forest)] px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            className="inline-flex min-h-11 items-center rounded-full bg-[color:var(--forest)] px-5 py-2.5 text-sm font-semibold text-primary-foreground"
           >
             Go home
           </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold"
+            className="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold"
           >
             Contact us
           </Link>
@@ -94,7 +97,7 @@ const ORG_JSONLD = {
   name: SITE_NAME,
   alternateName: SITE_HINDI_NAME,
   url: absoluteUrl("/"),
-  logo: absoluteUrl(APP_ICON_512),
+  logo: absoluteUrl(LOGO_IMAGE),
   image: defaultOgImage,
   description: SITE_DESCRIPTION,
   email: TRUST_EMAIL,
@@ -117,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: SITE_DESCRIPTION },
       { name: "robots", content: "index, follow" },
       { name: "author", content: SITE_NAME },
-      { name: "theme-color", content: "#2e5e3a" },
+      { name: "theme-color", content: "#143d2d" },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
       { property: "og:title", content: SITE_TITLE },
@@ -134,6 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "canonical", href: absoluteUrl("/") },
       { rel: "manifest", href: "/manifest.json" },
       { rel: "preload", as: "image", href: heroImage, fetchPriority: "high" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
       { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
     ],
@@ -207,23 +211,25 @@ function RootComponent() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <div className="flex min-h-dvh flex-col bg-background">
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[color:var(--forest)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
-          >
-            Skip to content
-          </a>
-          <Header />
-          <main id="main" className="flex-1">
-            <Outlet />
-          </main>
-          <Footer />
-          <InstallPrompt />
-        </div>
-      </LanguageProvider>
-    </QueryClientProvider>
+    <MotionConfig reducedMotion="user">
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <div className="flex min-h-dvh flex-col bg-background">
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[color:var(--forest)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+            >
+              Skip to content
+            </a>
+            <Header />
+            <main id="main" className="flex-1">
+              <Outlet />
+            </main>
+            <Footer />
+            <InstallPrompt />
+          </div>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </MotionConfig>
   );
 }

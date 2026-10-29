@@ -4,12 +4,17 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  preview: {
+    host: "127.0.0.1",
+  },
   plugins: [
     tanstackStart({
       server: { entry: "server" },
-      spa: {
+      prerender: {
         enabled: true,
-        maskPath: "/",
+        crawlLinks: true,
+        concurrency: 6,
+        failOnError: true,
       },
     }),
     react(),

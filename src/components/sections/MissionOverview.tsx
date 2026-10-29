@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Container } from "../layout/Container";
 import forestImg from "../../assets/forest-aerial.jpg";
+import { FlipWords } from "../ui/flip-words";
 
 const legalDetails = [
   "Registered Trust Deed",
@@ -13,23 +14,31 @@ const legalDetails = [
 
 export function MissionOverview() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section className="relative py-16 sm:py-20 lg:py-28">
       <Container>
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
           <div>
             <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
               <span className="size-1.5 rounded-full bg-[color:var(--leaf)]" />
               About Us
             </p>
             <motion.h2
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6 }}
               className="text-balance font-display text-3xl font-semibold leading-tight sm:text-5xl"
             >
               A Vrindavan-based public charitable trust for{" "}
-              <span className="text-gradient-forest">tree protection and green action</span>.
+              <span className="text-gradient-forest">
+                tree{" "}
+                <FlipWords
+                  words={["protection", "conservation", "care"]}
+                  className="min-w-[12ch] font-semibold text-[color:var(--forest)]"
+                />{" "}
+                and green action
+              </span>
+              .
             </motion.h2>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               Vriksh Rakshak Dal Sewa Trust is committed to environmental conservation, tree
@@ -59,7 +68,7 @@ export function MissionOverview() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
@@ -76,7 +85,7 @@ export function MissionOverview() {
                 className="size-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-4 max-w-[310px] rounded-lg bg-card p-5 shadow-lift ring-1 ring-border sm:-left-6">
+            <div className="absolute -bottom-6 left-0 w-full max-w-[310px] rounded-lg bg-card p-5 shadow-lift ring-1 ring-border sm:-left-6 sm:w-auto">
               <p className="font-display text-2xl font-semibold text-[color:var(--forest)]">
                 Legal Status
               </p>

@@ -28,7 +28,7 @@ export const Route = createFileRoute("/tree-relocation")({
       />
       <section className="py-16">
         <Container>
-          <div className="overflow-hidden rounded-lg shadow-lift">
+          <div className="surface-card overflow-hidden rounded-lg border border-border bg-card shadow-lift">
             <img
               src={relocImg}
               alt="Tree care and protection work"

@@ -25,7 +25,7 @@ function DonationConfirmationPage() {
   return (
     <section className="py-16 sm:py-24">
       <Container>
-        <div className="mx-auto max-w-4xl rounded-lg border border-border bg-card p-8 shadow-lift sm:p-12">
+        <div className="surface-card mx-auto max-w-4xl rounded-lg border border-border bg-card p-8 shadow-lift sm:p-12">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
             Support summary
           </p>

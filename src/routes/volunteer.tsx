@@ -77,7 +77,7 @@ function VolunteerPage() {
       <section className="py-16 sm:py-24">
         <Container size="sm">
           {submitted ? (
-            <div className="rounded-lg border border-border bg-card p-10 text-center shadow-soft">
+            <div className="surface-card rounded-lg border border-border bg-card p-6 text-center shadow-soft sm:p-10">
               <CheckCircle2
                 className="mx-auto size-12 text-[color:var(--leaf)]"
                 aria-hidden="true"
@@ -90,7 +90,7 @@ function VolunteerPage() {
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="mt-6 inline-flex rounded-full border border-border px-4 py-2 text-sm font-semibold"
+                className="mt-6 inline-flex min-h-11 items-center rounded-full border border-border px-4 py-2 text-sm font-semibold"
               >
                 Register another
               </button>
@@ -99,7 +99,7 @@ function VolunteerPage() {
             <form
               onSubmit={onSubmit}
               noValidate
-              className="rounded-lg border border-border bg-card p-6 shadow-soft sm:p-10"
+              className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft sm:p-8 md:p-10"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Full name" name="name" error={errors.name} required />
@@ -165,7 +165,7 @@ function Field({
   as?: "textarea";
 }) {
   const cls =
-    "w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40";
+    "w-full rounded-lg border border-input bg-background px-4 py-2.5 text-base focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40";
   return (
     <div className={as === "textarea" ? "sm:col-span-2 mt-5" : ""}>
       <label htmlFor={name} className="mb-1.5 block text-sm font-semibold">
@@ -204,7 +204,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-base focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
       >
         <option value="" disabled>
           Select an option

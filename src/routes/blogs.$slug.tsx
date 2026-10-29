@@ -67,7 +67,7 @@ function BlogPostPage() {
           <Container>
             <Link
               to="/blogs"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold shadow-soft"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold shadow-soft"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               Back to resources
@@ -127,7 +127,7 @@ function BlogPostPage() {
               <p key={paragraph}>{paragraph}</p>
             ))}
 
-            <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
+            <div className="surface-card rounded-lg border border-border bg-card p-6 shadow-soft">
               <p className="font-semibold">Sources and references</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {post.sources.map((source) => (
@@ -145,7 +145,7 @@ function BlogPostPage() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6 shadow-soft">
+            <div className="surface-card rounded-lg border border-border bg-card p-6 shadow-soft">
               <div className="flex items-center gap-3">
                 <Share2 className="size-5 text-[color:var(--forest)]" aria-hidden="true" />
                 <p className="font-semibold">Share this article</p>
@@ -159,7 +159,7 @@ function BlogPostPage() {
         </Container>
       </article>
 
-      <section className="py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <h2 className="font-display text-3xl font-semibold">Related articles</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -168,7 +168,7 @@ function BlogPostPage() {
                 key={item.slug}
                 to="/blogs/$slug"
                 params={{ slug: item.slug }}
-                className="rounded-lg border border-border bg-card p-5 shadow-soft"
+                className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
                   {item.category}

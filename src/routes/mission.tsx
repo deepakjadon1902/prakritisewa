@@ -49,7 +49,7 @@ function MissionPage() {
         sub="Inspiring every citizen to protect and preserve trees for future generations."
       />
       <MissionOverview />
-      <section className="bg-secondary/45 py-20 sm:py-24">
+      <section className="bg-secondary/45 py-16 sm:py-20 lg:py-24">
         <Container>
           <SectionHeader
             align="left"
@@ -57,15 +57,15 @@ function MissionPage() {
             title="Protect, nurture, preserve."
             sub="The Trust combines environmental conservation with public participation and social welfare."
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-lg border border-border bg-card p-8 shadow-soft">
+          <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2">
+            <div className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft sm:p-8">
               <h2 className="font-display text-2xl font-semibold">Vision</h2>
               <p className="mt-4 leading-7 text-muted-foreground">
                 To build a greener and healthier India by inspiring every citizen to protect and
                 preserve trees for future generations.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-card p-8 shadow-soft">
+            <div className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft sm:p-8">
               <h2 className="font-display text-2xl font-semibold">Mission</h2>
               <ul className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground">
                 {mission.map((item) => (
@@ -81,15 +81,15 @@ function MissionPage() {
       </section>
       <WhyTrees />
       <Process />
-      <section className="bg-secondary/45 py-20 sm:py-24">
+      <section className="bg-secondary/45 py-16 sm:py-20 lg:py-24">
         <Container>
           <SectionHeader
             align="left"
             eyebrow="Legal Information"
             title="Registered Public Charitable Trust"
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-lg border border-border bg-card p-8 shadow-soft">
+          <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2">
+            <div className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft sm:p-8">
               <dl className="grid gap-4 text-sm">
                 <div>
                   <dt className="font-semibold">Official Legal Name</dt>
@@ -115,7 +115,7 @@ function MissionPage() {
                 </div>
               </dl>
             </div>
-            <div className="rounded-lg border border-border bg-card p-8 shadow-soft">
+            <div className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft sm:p-8">
               <h3 className="font-display text-2xl font-semibold">Authorized Trustees</h3>
               <ul className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground">
                 {trustees.map((item) => (

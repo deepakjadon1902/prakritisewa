@@ -12,9 +12,9 @@ const points = [
 
 export function Testimonials() {
   return (
-    <section className="bg-secondary/45 py-20 sm:py-24">
+    <section className="bg-secondary/45 py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-12">
           <SectionHeader
             align="left"
             eyebrow="Why Choose Us"

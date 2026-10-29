@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Download, X } from "lucide-react";
-import { SITE_NAME } from "../../constants/site";
+import { APP_ICON_192, SITE_NAME } from "../../constants/site";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -26,9 +26,13 @@ export function InstallPrompt() {
   return (
     <div className="fixed bottom-4 left-4 right-4 z-[80] mx-auto max-w-md rounded-lg border border-border bg-card p-4 shadow-lift sm:left-auto">
       <div className="flex items-start gap-3">
-        <div className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-[color:var(--forest)]">
-          <Download className="size-5" aria-hidden="true" />
-        </div>
+        <img
+          src={APP_ICON_192}
+          alt=""
+          width={44}
+          height={44}
+          className="size-11 shrink-0 rounded-full object-cover ring-1 ring-border"
+        />
         <div className="min-w-0 flex-1">
           <p className="font-semibold">Install {SITE_NAME}</p>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -36,7 +40,7 @@ export function InstallPrompt() {
           </p>
           <button
             type="button"
-            className="mt-3 rounded-full bg-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-primary-foreground"
+            className="mt-3 inline-flex min-h-11 items-center rounded-full bg-[color:var(--forest)] px-4 py-2 text-sm font-semibold text-primary-foreground"
             onClick={async () => {
               await installEvent.prompt();
               await installEvent.userChoice;
@@ -44,13 +48,14 @@ export function InstallPrompt() {
               setInstallEvent(null);
             }}
           >
+            <Download className="mr-2 size-4" aria-hidden="true" />
             Install
           </button>
         </div>
         <button
           type="button"
           aria-label="Dismiss install prompt"
-          className="grid size-8 place-items-center rounded-full hover:bg-accent"
+          className="grid size-11 shrink-0 place-items-center rounded-full hover:bg-accent"
           onClick={() => setDismissed(true)}
         >
           <X className="size-4" aria-hidden="true" />

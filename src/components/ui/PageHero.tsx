@@ -14,11 +14,15 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-secondary/45 pt-14 pb-16 sm:pt-20 sm:pb-20">
+    <section className="relative isolate overflow-hidden border-b border-border bg-secondary/45 py-16 sm:py-20 md:py-24">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 -top-48 -z-10 size-[34rem] rounded-full bg-[color:var(--leaf)]/10 blur-3xl"
+      />
       <Container className="relative">
         {eyebrow && (
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--forest)]"
@@ -28,19 +32,19 @@ export function PageHero({
           </motion.p>
         )}
         <motion.h1
-          initial={{ opacity: 0, y: 14 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl"
+          className="max-w-4xl text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl"
         >
           {title}
         </motion.h1>
         {sub && (
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-5 max-w-2xl text-pretty text-lg text-muted-foreground"
+            className="mt-5 max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8"
           >
             {sub}
           </motion.p>

@@ -17,30 +17,35 @@ export const Route = createFileRoute("/privacy")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="Legal" title={<>Privacy Policy</>} sub="Last updated: July 2026" />
+      <PageHero eyebrow="Legal" title={<>Privacy Policy</>} sub="Last updated: October 2026" />
       <section className="py-16">
         <Container size="sm">
           <article className="prose prose-neutral max-w-none space-y-6 text-foreground/85">
             <p>
-              This page is maintained by {SITE_NAME} to explain how we collect, use, and safeguard
-              personal information when you contact us, sign up to volunteer, or participate in
-              campaigns.
+              This notice explains how {SITE_NAME} handles information you choose to enter in the
+              website contact and volunteer forms.
+            </p>
+            <h2 className="font-display text-2xl font-semibold text-foreground">Form details</h2>
+            <p>
+              Depending on your request, a form may ask for your name, email address, phone number,
+              city, availability, area of interest, and message. Provide only the details needed to
+              contact you.
             </p>
             <h2 className="font-display text-2xl font-semibold text-foreground">
-              Information we collect
+              How form messages are sent
             </h2>
             <p>
-              Contact details you voluntarily provide, such as name, email, phone, city, volunteer
-              preferences, and message details.
+              Submitting a form opens WhatsApp with a message prepared from the details you entered.
+              This website does not send that message automatically; the details are shared with the
+              Trust only if you choose to send it in WhatsApp. WhatsApp handles information under
+              its own privacy practices.
             </p>
-            <h2 className="font-display text-2xl font-semibold text-foreground">How we use it</h2>
+            <h2 className="font-display text-2xl font-semibold text-foreground">
+              Contact the Trust
+            </h2>
             <p>
-              To respond to inquiries, coordinate plantation drives, invite volunteers, and share
-              occasional updates about environmental and social welfare activities.
-            </p>
-            <h2 className="font-display text-2xl font-semibold text-foreground">Your rights</h2>
-            <p>
-              You can request correction or deletion of your information by writing to{" "}
+              To ask about a message you sent, or request correction or removal of details the Trust
+              received, write to{" "}
               <a className="text-[color:var(--forest)] underline" href={`mailto:${TRUST_EMAIL}`}>
                 {TRUST_EMAIL}
               </a>

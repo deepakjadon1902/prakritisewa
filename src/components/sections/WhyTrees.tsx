@@ -1,6 +1,7 @@
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import saplingImg from "../../assets/sapling-hands.jpg";
+import { FlipWords } from "../ui/flip-words";
 
 const benefits = [
   "Cleaner air and healthier public spaces.",
@@ -13,9 +14,9 @@ const benefits = [
 
 export function WhyTrees() {
   return (
-    <section className="bg-secondary/45 py-20 sm:py-24">
+    <section className="bg-secondary/45 py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-12">
           <div className="overflow-hidden rounded-lg shadow-lift">
             <img
               src={saplingImg}
@@ -32,7 +33,16 @@ export function WhyTrees() {
             <SectionHeader
               align="left"
               eyebrow="Why Trees Matter"
-              title="Nature protection is our collective responsibility."
+              title={
+                <>
+                  Nature protection is our{" "}
+                  <FlipWords
+                    words={["responsibility", "stewardship", "commitment"]}
+                    className="min-w-[14ch] font-semibold text-[color:var(--forest)]"
+                  />
+                  .
+                </>
+              }
               sub="Every tree supports public health, local climate, community life, and the future of the Braj region."
             />
             <ul className="mt-8 divide-y divide-border border-y border-border">

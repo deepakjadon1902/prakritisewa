@@ -32,11 +32,11 @@ export const Route = createFileRoute("/blogs")({
             {posts.map((p, i) => (
               <motion.article
                 key={p.slug}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
+                className="surface-card group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img

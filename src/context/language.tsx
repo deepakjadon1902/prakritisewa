@@ -12,6 +12,10 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
 
+  useEffect(() => {
+    document.documentElement.lang = lang === "hi" ? "hi-IN" : "en-IN";
+  }, [lang]);
+
   // Read persisted preference on the client only (avoids hydration mismatch).
   useEffect(() => {
     try {

@@ -114,7 +114,7 @@ function ContactPage() {
                 />
               </div>
 
-              <div className="mt-8 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
+              <div className="surface-card mt-8 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
                 <div className="aspect-[16/10] w-full bg-secondary">
                   <iframe
                     title="Vriksh Rakshak Dal Sewa Trust location"
@@ -126,7 +126,7 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6 shadow-lift sm:p-10">
+            <div className="surface-card rounded-lg border border-border bg-card p-6 shadow-lift sm:p-10">
               {ok ? (
                 <div className="py-16 text-center">
                   <CheckCircle2
@@ -141,7 +141,7 @@ function ContactPage() {
                   <button
                     type="button"
                     onClick={() => setOk(false)}
-                    className="mt-6 inline-flex rounded-full border border-border px-4 py-2 text-sm font-semibold"
+                    className="mt-6 inline-flex min-h-11 items-center rounded-full border border-border px-4 py-2 text-sm font-semibold"
                   >
                     Send another
                   </button>
@@ -167,7 +167,7 @@ function ContactPage() {
                       name="message"
                       rows={6}
                       maxLength={1000}
-                      className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+                      className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-base focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
                     />
                     {errors.message && (
                       <p className="mt-1 text-xs text-destructive">{errors.message}</p>
@@ -240,7 +240,7 @@ function TextField({
         name={name}
         type={type}
         maxLength={255}
-        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
+        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-base focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/40"
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>

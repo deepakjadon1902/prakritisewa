@@ -1,18 +1,18 @@
-const VERSION = "vriksh-rakshak-v4";
+const VERSION = "vriksh-rakshak-v7";
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const IMAGE_CACHE = `${VERSION}-images`;
 
 const APP_SHELL_URLS = [
   "/",
-  "/_shell.html",
   "/offline.html",
   "/manifest.json",
-  "/icon-192.jpg",
-  "/icon-512.jpg",
+  "/vriksh-rakshak-logo.jpeg",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/favicon-32.png",
   "/favicon-48.png",
   "/apple-touch-icon.png",
-  "/vriksh-rakshak-logo.jpeg",
   "/og-vriksh-rakshak.jpg",
   "/robots.txt",
   "/sitemap.xml",
@@ -126,7 +126,6 @@ async function handleNavigation(event) {
   } catch {
     return (
       (await caches.match(request)) ||
-      (await caches.match("/_shell.html")) ||
       (await caches.match("/")) ||
       (await caches.match("/offline.html")) ||
       new Response("Offline", {

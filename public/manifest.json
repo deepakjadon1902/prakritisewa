@@ -10,25 +10,31 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait-primary",
-  "background_color": "#fbfaf2",
-  "theme_color": "#2e5e3a",
+  "background_color": "#f8f8f1",
+  "theme_color": "#143d2d",
   "categories": ["education", "lifestyle", "news"],
   "icons": [
     {
-      "src": "/icon-192.jpg",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.jpg",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
       "src": "/favicon-48.png",
       "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
       "type": "image/png",
       "purpose": "any"
     }

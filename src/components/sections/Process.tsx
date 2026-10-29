@@ -1,5 +1,6 @@
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
+import { FlipWords } from "../ui/flip-words";
 
 const steps = [
   {
@@ -36,13 +37,22 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-20 sm:py-24">
+    <section className="py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-12">
           <SectionHeader
             align="left"
             eyebrow="Our Approach"
-            title="Planting is the beginning. Protection is the mission."
+            title={
+              <>
+                Planting is the beginning.{" "}
+                <FlipWords
+                  words={["Protection", "Tree Care", "Nurture"]}
+                  className="min-w-[10ch] font-semibold text-[color:var(--forest)]"
+                />{" "}
+                is the mission.
+              </>
+            }
             sub="The Trust works through careful local planning, public participation, and ongoing care after every campaign."
           />
 

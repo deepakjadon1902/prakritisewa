@@ -4,16 +4,25 @@ import { ArrowRight, Clock } from "lucide-react";
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { posts } from "../../data/blog";
+import { FlipWords } from "../ui/flip-words";
 
 export function BlogPreview() {
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-16 sm:py-20 lg:py-28">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeader
             align="left"
             eyebrow="Resources"
-            title="Source-linked stories for green action."
+            title={
+              <>
+                Source-linked stories for{" "}
+                <FlipWords
+                  words={["green action", "tree care", "community care"]}
+                  className="min-w-[14ch] font-semibold text-[color:var(--forest)]"
+                />
+              </>
+            }
             sub="Environmental reading that supports public awareness, tree protection, and community participation."
           />
           <Link
@@ -32,11 +41,11 @@ export function BlogPreview() {
           {posts.slice(0, 3).map((p, i) => (
             <motion.article
               key={p.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
+              className="surface-card group overflow-hidden rounded-lg border border-border bg-card shadow-soft"
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img

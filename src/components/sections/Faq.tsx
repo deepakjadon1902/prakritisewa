@@ -10,14 +10,14 @@ export function Faq({ limit }: { limit?: number }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24 sm:py-28">
+    <section className="py-16 sm:py-20 lg:py-28">
       <Container size="sm">
         <SectionHeader
           eyebrow="FAQs"
-          title="Questions people ask us the most."
-          sub="Can't find your answer? Write to us. We reply within two working days."
+          title="Clear answers to common questions."
+          sub="Have another question? Contact the Trust through our contact page."
         />
-        <div className="mt-10 divide-y divide-border rounded-lg border border-border bg-card shadow-soft">
+        <div className="surface-card mt-10 divide-y divide-border rounded-lg border border-border bg-card shadow-soft">
           {list.map((f, i) => {
             const isOpen = open === i;
             return (

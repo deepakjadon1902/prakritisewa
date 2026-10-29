@@ -69,15 +69,15 @@ export const Route = createFileRoute("/stories")({
             {stories.map((s, i) => (
               <motion.article
                 key={s.title}
-                initial={{ opacity: 0, y: 24 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6 }}
-                className={`grid gap-8 md:grid-cols-2 md:items-center ${
+                className={`grid gap-6 md:grid-cols-2 md:items-center ${
                   i % 2 ? "md:[&>figure]:order-2" : ""
                 }`}
               >
-                <figure className="overflow-hidden rounded-lg shadow-lift">
+                <figure className="surface-card overflow-hidden rounded-xl border border-border bg-card shadow-soft">
                   <img
                     src={s.image}
                     alt={s.title}
@@ -87,7 +87,7 @@ export const Route = createFileRoute("/stories")({
                     className="aspect-[4/3] size-full object-cover"
                   />
                 </figure>
-                <div>
+                <div className="surface-card rounded-xl border border-border bg-card p-5 sm:p-7">
                   <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--forest)]">
                     {s.location}
                   </p>

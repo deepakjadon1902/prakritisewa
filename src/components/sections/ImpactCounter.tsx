@@ -1,6 +1,7 @@
 import { Container } from "../layout/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { useLanguage } from "../../context/language";
+import { FlipWords } from "../ui/flip-words";
 
 const impactRows = [
   {
@@ -26,16 +27,28 @@ const impactRows = [
 ];
 
 export function ImpactCounter() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
-    <section className="bg-[color:var(--forest)] py-20 text-white sm:py-24">
+    <section
+      id="impact"
+      className="scroll-mt-20 bg-[color:var(--forest)] py-16 text-white sm:py-20 lg:py-24 md:scroll-mt-24"
+    >
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-12">
           <SectionHeader
             align="left"
             eyebrow="Our Impact"
-            title={<span className="text-white">{t("counter_title")}</span>}
+            title={
+              <FlipWords
+                words={
+                  lang === "hi"
+                    ? ["हमारा प्रभाव", "हमारा कार्य", "हमारी पहुंच"]
+                    : ["Our Impact", "Our Work", "Our Reach"]
+                }
+                className={`font-display font-semibold text-[color:var(--sun)] ${lang === "hi" ? "min-w-[9em]" : "min-w-[10ch]"}`}
+              />
+            }
             sub={<span className="text-white/78">{t("counter_sub")}</span>}
           />
 
@@ -45,7 +58,7 @@ export function ImpactCounter() {
                 key={row.area}
                 className="grid gap-3 py-5 md:grid-cols-[190px_minmax(0,1fr)] md:gap-8"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-white/58">
+                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-white/72">
                   {row.area}
                 </p>
                 <div className="min-w-0">
@@ -60,7 +73,7 @@ export function ImpactCounter() {
         </div>
 
         <p className="mt-8 border-l-2 border-[color:var(--sun)] pl-4 text-sm text-white/72">
-          Verified plantation statistics can be added when official records are available.
+          Plantation totals are shared when verified records are available.
         </p>
       </Container>
     </section>

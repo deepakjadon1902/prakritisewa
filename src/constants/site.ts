@@ -15,8 +15,8 @@ export const TRUST_PHONE_E164 = "918430604625";
 export const TRUST_LOCATION = "Vrindavan, Mathura, Uttar Pradesh, India";
 export const FACEBOOK_PROFILE = "https://www.facebook.com/ganesh.baghel.583";
 export const LOGO_IMAGE = "/vriksh-rakshak-logo.jpeg";
-export const APP_ICON_192 = "/icon-192.jpg";
-export const APP_ICON_512 = "/icon-512.jpg";
+export const APP_ICON_192 = "/icon-192.png";
+export const APP_ICON_512 = "/icon-512.png";
 
 export const defaultOgImage = `${SITE_URL}/og-vriksh-rakshak.jpg`;
 

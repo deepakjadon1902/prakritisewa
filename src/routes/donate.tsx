@@ -93,7 +93,7 @@ function DonatePage() {
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div>
-              <div className="rounded-lg border border-border bg-card p-6 shadow-soft sm:p-8">
+              <div className="surface-card rounded-lg border border-border bg-card p-6 shadow-soft sm:p-8">
                 <div className="flex items-center gap-3">
                   <span className="grid size-12 place-items-center rounded-full bg-secondary text-[color:var(--forest)]">
                     <HeartHandshake className="size-6" aria-hidden="true" />
@@ -163,7 +163,7 @@ function DonatePage() {
                 {donationAmounts.map((item) => (
                   <article
                     key={item.amount}
-                    className="rounded-lg border border-border bg-card p-5 shadow-soft"
+                    className="surface-card rounded-lg border border-border bg-card p-5 shadow-soft"
                   >
                     <div className="flex items-center gap-2 text-[color:var(--forest)]">
                       <IndianRupee className="size-4" aria-hidden="true" />
@@ -176,7 +176,7 @@ function DonatePage() {
               </div>
             </div>
 
-            <aside className="rounded-2xl border border-border bg-card p-6 text-center shadow-lift sm:p-8">
+            <aside className="surface-card rounded-2xl border border-border bg-card p-6 text-center shadow-lift sm:p-8">
               <div className="mx-auto grid size-14 place-items-center rounded-full bg-secondary text-[color:var(--forest)]">
                 <QrCode className="size-7" aria-hidden="true" />
               </div>

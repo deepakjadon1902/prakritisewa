@@ -7,7 +7,7 @@ import { SITE_HINDI_NAME } from "../../constants/site";
 import { Container } from "../layout/Container";
 import { FlipWords } from "../ui/flip-words";
 import { TrustIcon } from "../icons/TrustIcon";
-import heroImage from "../../assets/hero-tree-optimized.jpg";
+import heroVideo from "../../assets/hero.mp4";
 
 export function Hero() {
   const { t, lang } = useLanguage();
@@ -47,13 +47,12 @@ export function Hero() {
     <section className="relative isolate overflow-hidden">
       <video
         ref={heroVideoRef}
-        src="/hero%20section/hero.mp4"
+        src={heroVideo}
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
-        poster={heroImage}
         aria-hidden="true"
         tabIndex={-1}
         className="absolute inset-0 z-0 size-full object-cover brightness-[1.32]"

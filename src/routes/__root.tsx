@@ -15,7 +15,6 @@ import { LanguageProvider } from "../context/language";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { InstallPrompt } from "../components/common/InstallPrompt";
-import heroImage from "../assets/hero-tree-optimized.jpg";
 import {
   LOGO_IMAGE,
   SITE_DESCRIPTION,
@@ -136,7 +135,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: absoluteUrl("/") },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "preload", as: "image", href: heroImage, fetchPriority: "high" },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
       { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
